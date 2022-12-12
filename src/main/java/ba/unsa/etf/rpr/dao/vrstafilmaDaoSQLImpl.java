@@ -11,7 +11,7 @@ public class vrstafilmaDaoSQLImpl implements vrstafilmaDao {
     private Connection con;
     public vrstafilmaDaoSQLImpl(){
         try{
-            FileReader fr=new FileReader("src/main/resources/db.propeties");
+            FileReader fr=new FileReader("src/main/resources/db.properties");
             Properties p=new Properties();
             p.load(fr);
             String url=p.getProperty("url");
