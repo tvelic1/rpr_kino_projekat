@@ -13,9 +13,11 @@ public class vrstafilmaDaoSQLImpl implements vrstafilmaDao {
         try{
             FileReader fr=new FileReader("src/main/resources/db.propeties");
             Properties p=new Properties();
+            p.load(fr);
             String url=p.getProperty("url");
             String user =p.getProperty("user");
             String pass=p.getProperty("password");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
             this.con=DriverManager.getConnection(url,user,pass);
         }catch (Exception e){
@@ -36,12 +38,12 @@ public class vrstafilmaDaoSQLImpl implements vrstafilmaDao {
                     vrsta.setId(rs.getInt("id"));
                     vrsta.setZanr(rs.getString("zanr"));
                     rs.close();
-                    return vrstafilma:
+                    return vrsta;
                 }else return null;
 
 
         } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             } return null;
     }
     public vrstafilma add(vrstafilma v){
@@ -90,7 +92,7 @@ public class vrstafilmaDaoSQLImpl implements vrstafilmaDao {
             ResultSet rs= st.executeQuery();
             while(rs.next()){
                 vrstafilma vr=new vrstafilma();
-                vr.setId(rs.getInt("id")):
+                vr.setId(rs.getInt("id"));
                 vr.setZanr(rs.getString("zanr"));
                 v.add(vr);
             } rs.close();
