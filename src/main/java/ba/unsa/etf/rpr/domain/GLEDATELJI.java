@@ -2,16 +2,16 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class GLEDATELJI {
+public class GLEDATELJI implements Idable {
     private int jmbg;
     private String ime;
     private filmovi id_film;
 
-    public int getJmbg() {
+    public int getId() {
         return jmbg;
     }
 
-    public void setJmbg(int jmbg) {
+    public void setId(int jmbg) {
         this.jmbg = jmbg;
     }
 
@@ -36,12 +36,12 @@ public class GLEDATELJI {
         if (this == o) return true;
         if (!(o instanceof GLEDATELJI)) return false;
         GLEDATELJI that = (GLEDATELJI) o;
-        return getJmbg() == that.getJmbg() && getIme().equals(that.getIme()) && getId_film().equals(that.getId_film());
+        return getId() == that.getId() && getIme().equals(that.getIme()) && getId_film().equals(that.getId_film());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getJmbg(), getIme(), getId_film());
+        return Objects.hash(getId(), getIme(), getId_film());
     }
 
     @Override

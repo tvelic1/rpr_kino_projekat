@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr.domain;
 import java.util.*;
 
-public class filmovi {
+public class filmovi implements Idable {
     private int idfilma;
     private String ocjena;
 
@@ -9,11 +9,11 @@ public class filmovi {
     private String ime;
     private vrstafilma id_vrsta_filma;
 
-    public int getIdfilma() {
+    public int getId() {
         return idfilma;
     }
 
-    public void setIdfilma(int idfilma) {
+    public void setId(int idfilma) {
         this.idfilma = idfilma;
     }
 
@@ -54,12 +54,12 @@ public class filmovi {
         if (this == o) return true;
         if (!(o instanceof filmovi)) return false;
         filmovi filmovi = (filmovi) o;
-        return getIdfilma() == filmovi.getIdfilma() && getTrajanje() == filmovi.getTrajanje() && getOcjena().equals(filmovi.getOcjena()) && getIme().equals(filmovi.getIme()) && getId_vrsta_filma().equals(filmovi.getId_vrsta_filma());
+        return getId() == filmovi.getId() && getTrajanje() == filmovi.getTrajanje() && getOcjena().equals(filmovi.getOcjena()) && getIme().equals(filmovi.getIme()) && getId_vrsta_filma().equals(filmovi.getId_vrsta_filma());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdfilma(), getOcjena(), getTrajanje(), getIme(), getId_vrsta_filma());
+        return Objects.hash(getId(), getOcjena(), getTrajanje(), getIme(), getId_vrsta_filma());
     }
 
     @Override

@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class vrstafilma {
+public class vrstafilma implements Idable{
 
     private int id;
     private String zanr;

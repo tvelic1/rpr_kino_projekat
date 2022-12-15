@@ -34,7 +34,7 @@ public class filmoviDaoSQLImpl implements filmoviDao {
             ResultSet rs=st.executeQuery();
             if(rs.next()){
                 filmovi film=new filmovi();
-                film.setIdfilma(rs.getInt("idfilma"));
+                film.setId(rs.getInt("idfilma"));
                 film.setIme(rs.getString("ime"));
                 film.setOcjena(rs.getString("ocjena"));
                 film.setTrajanje(rs.getInt("trajanje"));
