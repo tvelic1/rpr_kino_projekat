@@ -83,7 +83,7 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
         int brojac=0;
         for(Map.Entry<String,Object>entry:row.entrySet()){
             brojac++;
-            if(entry.getKey().equals("id") || entry.getKey().equals("idfilma") || entry.getKey().equals("jmbg")) continue;
+            if(entry.getKey().equals("id") || entry.getKey().equals("idfilma") ) continue;
             s.append(entry.getKey()).append("=?");
             if(row.size()!=brojac);
             s.append(",");
@@ -96,7 +96,7 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
         int b=0;
         for(Map.Entry<String,Object> entry: row.entrySet()){
             b++;
-            if(entry.getKey().equals("id") || entry.getKey().equals("idfilma") || entry.getKey().equals("jmbg")  ) continue;
+            if(entry.getKey().equals("id") || entry.getKey().equals("idfilma")  ) continue;
             s.append(entry.getKey());
             q.append("?");
             if(row.size()!=b){
@@ -116,7 +116,7 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
             PreparedStatement st= getCon().prepareStatement(s.toString(),Statement.RETURN_GENERATED_KEYS);
             int br=1;
             for(Map.Entry<String,Object> entry: row.entrySet()){
-                if(entry.getKey().equals("id") || entry.getKey().equals("idfilma") || entry.getKey().equals("jmbg")) continue;
+                if(entry.getKey().equals("id") || entry.getKey().equals("idfilma") ) continue;
                 st.setObject(br,entry.getValue());
                 br++;
             }

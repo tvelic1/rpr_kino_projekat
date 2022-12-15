@@ -3,16 +3,16 @@ package ba.unsa.etf.rpr.domain;
 import java.util.Objects;
 
 public class GLEDATELJI implements Idable {
-    private int jmbg;
+    private int id;
     private String ime;
     private filmovi id_film;
 
     public int getId() {
-        return jmbg;
+        return id;
     }
 
     public void setId(int jmbg) {
-        this.jmbg = jmbg;
+        this.id = jmbg;
     }
 
     public String getIme() {
@@ -47,7 +47,7 @@ public class GLEDATELJI implements Idable {
     @Override
     public String toString() {
         return "GLEDATELJI{" +
-                "jmbg=" + jmbg +
+                "jmbg=" + id +
                 ", ime='" + ime + '\'' +
                 ", id_film=" + id_film +
                 '}';

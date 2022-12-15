@@ -64,7 +64,7 @@ public class filmoviDaoSQLImpl extends AbstractDao<filmovi> implements filmoviDa
             ArrayList<filmovi> lista= new ArrayList<>();
             while(r.next()){
                 lista.add(row2object(r));
-            }
+            } return lista;
         }catch(SQLException e){
             throw new filmoviException(e.getMessage(),e);
         }
