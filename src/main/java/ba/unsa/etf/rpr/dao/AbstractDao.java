@@ -32,4 +32,39 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
 
     public abstract Map<String, Object> object2row(T object);
 
+    public T getById(int id) throws filmoviException{
+        String query="SELECT * FROM "+tableName+"WHERE id=?";
+        try{
+            PreparedStatement st=this.con.prepareStatement(query);
+            st.setInt(1,id);
+            ResultSet rs=st.executeQuery();
+            if(rs.next()){
+                T result=row2object(rs);
+                rs.close();
+                return result;
+            }else{
+                throw new filmoviException("Object not found!");
+            }
+        } catch (SQLException e) {
+            throw new filmoviException(e.getMessage(),e);
+        }
+    }
+    public List<T> getAll() throws filmoviException{
+        String q="SELECT * FROM "+tableName;
+        List<T> results=new ArrayList<T>();
+        try{
+            PreparedStatement st=getCon().prepareStatement(q);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                T object=row2object(rs);
+                results.add(object);
+            }rs.close();
+            return results;
+
+
+        } catch (SQLException e) {
+            throw new filmoviException(e.getMessage(),e);
+        }
+    }
+
 }
