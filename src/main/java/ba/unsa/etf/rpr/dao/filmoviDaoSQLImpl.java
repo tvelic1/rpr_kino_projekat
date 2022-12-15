@@ -1,51 +1,74 @@
 package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.vrstafilma;
 import ba.unsa.etf.rpr.domain.filmovi;
+import ba.unsa.etf.rpr.exceptions.filmoviException;
 
 import java.io.FileReader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.Properties;
 
-public class filmoviDaoSQLImpl implements filmoviDao {
-    private Connection con;
+public class filmoviDaoSQLImpl extends AbstractDao<filmovi> implements filmoviDao {
     public filmoviDaoSQLImpl(){
-           try{
-            FileReader fr=new FileReader("src/main/resources/db.properties");
-            Properties p=new Properties();
-            p.load(fr);
-            String url=p.getProperty("url");
-            String user =p.getProperty("user");
-            String pass=p.getProperty("password");
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            this.con=DriverManager.getConnection(url,user,pass);
-        }catch (Exception e) {
-               e.printStackTrace();
-           }
-        }
-        @Override
-    public filmovi getById(int id){
-        String query="SELECT * FROM quotes WHERE id=?";
+        super("filmovi");
+    }
+    @Override
+    public filmovi row2object(ResultSet rs) throws filmoviException{
         try{
-            PreparedStatement st=this.con.prepareStatement(query);
-            st.setInt(1,id);
-            ResultSet rs=st.executeQuery();
-            if(rs.next()){
-                filmovi film=new filmovi();
-                film.setId(rs.getInt("idfilma"));
-                film.setIme(rs.getString("ime"));
-                film.setOcjena(rs.getString("ocjena"));
-                film.setTrajanje(rs.getInt("trajanje"));
-                rs.close();
-                return film;
-            } else return null;
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }return null;
+            filmovi f=new filmovi();
+            f.setId(rs.getInt("idfilma"));
+            f.setIme(rs.getString("ime"));
+            f.setTrajanje(rs.getInt("trajanje"));
+            f.setOcjena(rs.getString("ocjena"));
+            f.setId_vrsta_filma(DaoFactory.vrstaaDao().getById(rs.getInt("id_vrsta_filma")));
+            return f;
+        }catch(SQLException e){
+            throw new filmoviException(e.getMessage(),e);
         }
+    }
+    @Override
+    public Map<String,Object> object2row(filmovi f){
+        Map<String,Object> item=new TreeMap<String,Object>();
+        item.put("id_vrsta_filma", f.getId_vrsta_filma().getId());
+        item.put("idfilma",f.getId());
+        item.put("ime",f.getIme());
+        item.put("ocjena",f.getOcjena());
+        item.put("trajanje",f.getTrajanje());
+        return item;
+    }
+    @Override
+    public List<filmovi> searchByName(String name) throws filmoviException{
+        String q="SELECT * FROM filmovi WHERE ime LIKE concat('%', ? ,'%')";
+        try{
+            PreparedStatement st=getCon().prepareStatement(q);
+            st.setString(1,name);
+            ResultSet rs=st.executeQuery();
+            ArrayList<filmovi> lista=new ArrayList<>();
+            while(rs.next()){
+                lista.add(row2object(rs));
+            } return lista;
+        }catch(SQLException e){
+            throw new filmoviException(e.getMessage(),e);
+        }
+    }
+    @Override
+    public List<filmovi> searchByVrsta(vrstafilma v) throws filmoviException{
+        String q="SELECT * FROM filmovi WHERE id_vrsta_filma=?";
+        try{
+            PreparedStatement st=getCon().prepareStatement(q);
+            st.setInt(1,v.getId());
+            ResultSet r=st.executeQuery();
+            ArrayList<filmovi> lista= new ArrayList<>();
+            while(r.next()){
+                lista.add(row2object(r));
+            }
+        }catch(SQLException e){
+            throw new filmoviException(e.getMessage(),e);
+        }
+    }
 
 
     }

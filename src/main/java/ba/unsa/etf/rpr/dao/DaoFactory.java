@@ -8,7 +8,7 @@ public class DaoFactory {
     private DaoFactory(){
     }
 
-    public static vrstafilmaDao vrstaDao(){
+    public static vrstafilmaDao vrstaaDao(){
         return vrstaDao;
     }
 

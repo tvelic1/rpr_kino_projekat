@@ -5,5 +5,5 @@ import ba.unsa.etf.rpr.exceptions.filmoviException;
 import java.util.List;
 public interface filmoviDao extends Dao<filmovi>{
     List<filmovi> searchByName(String name) throws filmoviException;
-    List<filmovi> searchByZanr(vrstafilma zanr) throws filmoviException;
+    List<filmovi> searchByVrsta(vrstafilma z) throws filmoviException;
 }
