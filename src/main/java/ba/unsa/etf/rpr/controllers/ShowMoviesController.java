@@ -1,31 +1,32 @@
 package ba.unsa.etf.rpr.controllers;
-import ba.unsa.etf.rpr.dao.vrstafilmaDaoSQLImpl;
-import ba.unsa.etf.rpr.domain.vrstafilma;
-import ba.unsa.etf.rpr.exceptions.filmoviException;
+import ba.unsa.etf.rpr.domain.filmovi;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class ShowMoviesController {
-    public Button okbtn;
-    public TextField text;
-    public vrstafilma vrsta;
-    public vrstafilmaDaoSQLImpl dao = new vrstafilmaDaoSQLImpl();
+    public TextArea text;
+    public Button okBtn;
+    public TextField ocjena;
+    private filmovi film;
 
-    public void OkbttnAction(ActionEvent actionEvent){
-        vrsta=new vrstafilma();
-        vrsta.setZanr(text.getText());
-        try{
-            dao.add(vrsta);
-        }catch(filmoviException f){
-            System.out.println("Problem with adding");
-            throw new RuntimeException(f);
-        }
-        Stage stage=(Stage)okbtn.getScene().getWindow();
+
+    public ShowMoviesController(filmovi film) {
+        this.film = film;
+    }
+
+    @FXML
+    public void initialize() {
+        text.setText(film.getIme());
+        ocjena.setText(filmovi.getOcjena());
+    }
+
+    public void okBtnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage) text.getScene().getWindow();
         stage.close();
     }
-    public vrstafilma getVrstafilma(){
-        return vrsta;
-    }
+
 }

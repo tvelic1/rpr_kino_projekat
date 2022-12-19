@@ -3,9 +3,9 @@ import java.util.*;
 
 public class filmovi implements Idable {
     private int idfilma;
-    private String ocjena;
+    private static String ocjena;
 
-    private int trajanje;
+    private static int trajanje;
     private String ime;
     private vrstafilma id_vrsta_filma;
 
@@ -17,7 +17,7 @@ public class filmovi implements Idable {
         this.idfilma = idfilma;
     }
 
-    public String getOcjena() {
+    public static String getOcjena() {
         return ocjena;
     }
 
@@ -25,7 +25,7 @@ public class filmovi implements Idable {
         this.ocjena = ocjena;
     }
 
-    public int getTrajanje() {
+    public static int getTrajanje() {
         return trajanje;
     }
 
