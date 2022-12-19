@@ -16,5 +16,16 @@ public class ShowMoviesController {
     public void OkbttnAction(ActionEvent actionEvent){
         vrsta=new vrstafilma();
         vrsta.setZanr(text.getText());
+        try{
+            dao.add(vrsta);
+        }catch(filmoviException f){
+            System.out.println("Problem with adding");
+            throw new RuntimeException(f);
+        }
+        Stage stage=(Stage)okbtn.getScene().getWindow();
+        stage.close();
+    }
+    public vrstafilma getVrstafilma(){
+        return vrsta;
     }
 }
