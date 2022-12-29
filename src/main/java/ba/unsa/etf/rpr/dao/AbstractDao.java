@@ -157,6 +157,11 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
                 for(int i=0;i<param.length;i++)
                     st.setObject(i,param[i-1]);
             }
+            ResultSet rs= st.executeQuery();
+            ArrayList<T> resultList=new ArrayList<>();
+            while(rs.next()){
+                resultList.add(row2object(rs));
+            } return resultList;
         }catch (SQLException e){
             throw new filmoviException(e.getMessage(),e);
         }
