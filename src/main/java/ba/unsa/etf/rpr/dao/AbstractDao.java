@@ -167,6 +167,9 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
         }
     }
     public T executeQueryUnique(String query,Object[] a) throws filmoviException{
+        List<T> result=executeQuery(query,a)
+                if(result!=null && result.size()==1) return result.get(0);
+                else throw new filmoviException("Nema objekta");
 
     }
 
