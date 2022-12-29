@@ -18,4 +18,18 @@ public class FilmoviManager  {
         DaoFactory.filmDao().delete(id);
 
     }
+    public filmovi getByID(int id) throws filmoviException{
+        return DaoFactory.filmDao().getById(id);
+
+    }
+    public void update(filmovi f) throws filmoviException{
+        DaoFactory.filmDao().update(f);
+
+    }
+    public filmovi add(filmovi f) throws filmoviException{
+        return DaoFactory.filmDao().add(f);
+    }
+
+
+
 }
