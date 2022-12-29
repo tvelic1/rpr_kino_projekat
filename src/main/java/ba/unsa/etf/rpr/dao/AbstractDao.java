@@ -150,5 +150,19 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
         }
 
     }
+    public List<T> executeQuery(String q, Object[] param) throws filmoviException{
+        try{
+            PreparedStatement st= getCon().prepareStatement(q);
+            if(param!=null){
+                for(int i=0;i<param.length;i++)
+                    st.setObject(i,param[i-1]);
+            }
+        }catch (SQLException e){
+            throw new filmoviException(e.getMessage(),e);
+        }
+    }
+    public T executeQueryUnique(String query,Object[] a) throws filmoviException{
+
+    }
 
 }

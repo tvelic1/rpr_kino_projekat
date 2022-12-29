@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Properties;
+import java.sql.ResultSet;
 
 public class filmoviDaoSQLImpl extends AbstractDao<filmovi> implements filmoviDao {
     public filmoviDaoSQLImpl(){
@@ -68,6 +69,11 @@ public class filmoviDaoSQLImpl extends AbstractDao<filmovi> implements filmoviDa
         }catch(SQLException e){
             throw new filmoviException(e.getMessage(),e);
         }
+    }
+    @Override
+    public filmovi randomFilm() throws filmoviException{
+        return executeQueryUnique("SELECT * FROM filmovi ORDER BY RAND() LIMIT 1", null);
+
     }
 
 
