@@ -18,6 +18,8 @@ public class GLEDATELJIDaoSQLImpl extends AbstractDao<GLEDATELJI> implements  GL
             g.setId(rs.getInt("id"));
             g.setIme(rs.getString("ime"));
             g.setId_film(DaoFactory.filmDao().getById(rs.getInt("id_film")));
+            g.setEmail(rs.getString("email"));
+            g.setPassword(rs.getString("password"));
             return g;
 
         }catch(SQLException e){
@@ -30,6 +32,8 @@ public class GLEDATELJIDaoSQLImpl extends AbstractDao<GLEDATELJI> implements  GL
         item.put("id",gl.getId());
         item.put("ime",gl.getIme());
         item.put("id_film",gl.getId_film().getId());
+        item.put("email",gl.getEmail());
+        item.put("password",gl.getPassword());
         return item;
 
     }

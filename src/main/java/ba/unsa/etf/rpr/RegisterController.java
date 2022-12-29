@@ -1,7 +1,9 @@
 package ba.unsa.etf.rpr;
+import ba.unsa.etf.rpr.dao.JdbcDao;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,12 +15,21 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import java.sql.SQLException;
 
 
+public class RegisterController extends Application {
+        @FXML
+        private TextField fullNameField;
 
+        @FXML
+        private TextField emailIdField;
 
+        @FXML
+        private PasswordField passwordField;
 
-    public class RegisterController extends Application {
+        @FXML
+        private Button submitButton;
 
 
 
@@ -109,13 +120,14 @@ import javafx.stage.Window;
             gridPane.add(passwordField, 1, 3);
 
             // Add Submit Button
-            Button submitButton = new Button("Submit");
+            Button submitButton = new Button("Button");
             submitButton.setPrefHeight(40);
             submitButton.setDefaultButton(true);
             submitButton.setPrefWidth(100);
             gridPane.add(submitButton, 0, 4, 2, 1);
             GridPane.setHalignment(submitButton, HPos.CENTER);
             GridPane.setMargin(submitButton, new Insets(20, 0,20,0));
+
 
             submitButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -149,5 +161,41 @@ import javafx.stage.Window;
 
         public static void main(String[] args) {
             launch(args);
+        }
+
+
+        public void register(ActionEvent actionEvent) throws SQLException {
+            Window owner = submitButton.getScene().getWindow();
+
+            System.out.println(fullNameField.getText());
+            System.out.println(emailIdField.getText());
+            System.out.println(passwordField.getText());
+            if (fullNameField.getText().isEmpty()) {
+                showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                        "Please enter your name");
+                return;
+            }
+
+            if (emailIdField.getText().isEmpty()) {
+                showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                        "Please enter your email id");
+                return;
+            }
+            if (passwordField.getText().isEmpty()) {
+                showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                        "Please enter a password");
+                return;
+            }
+            JdbcDao jdbcDao = new JdbcDao();
+            jdbcDao.insertRecord(fullNameField.getText(), emailIdField.getText(), passwordField.getText());
+            String fullName = fullNameField.getText();
+            String emailId = emailIdField.getText();
+            String password = passwordField.getText();
+
+
+
+            showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!",
+                    "Welcome " + fullNameField.getText());
+
         }
     }

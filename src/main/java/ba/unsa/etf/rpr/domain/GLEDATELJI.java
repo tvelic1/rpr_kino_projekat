@@ -6,6 +6,8 @@ public class GLEDATELJI implements Idable {
     private int id;
     private String ime;
     private filmovi id_film;
+    private String email;
+    private String password;
 
     public int getId() {
         return id;
@@ -27,6 +29,22 @@ public class GLEDATELJI implements Idable {
         return id_film;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void setId_film(filmovi id_film) {
         this.id_film = id_film;
     }
@@ -36,20 +54,22 @@ public class GLEDATELJI implements Idable {
         if (this == o) return true;
         if (!(o instanceof GLEDATELJI)) return false;
         GLEDATELJI that = (GLEDATELJI) o;
-        return getId() == that.getId() && getIme().equals(that.getIme()) && getId_film().equals(that.getId_film());
+        return getId() == that.getId() && getIme().equals(that.getIme()) && getId_film().equals(that.getId_film()) && getEmail().equals(that.getEmail()) && getPassword().equals(that.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getIme(), getId_film());
+        return Objects.hash(getId(), getIme(), getId_film(), getEmail(), getPassword());
     }
 
     @Override
     public String toString() {
         return "GLEDATELJI{" +
-                "jmbg=" + id +
+                "id=" + id +
                 ", ime='" + ime + '\'' +
                 ", id_film=" + id_film +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
