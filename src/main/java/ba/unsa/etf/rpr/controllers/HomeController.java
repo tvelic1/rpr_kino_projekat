@@ -21,6 +21,6 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
-public class HomeController { int a;
+public class HomeController {
 
 }
