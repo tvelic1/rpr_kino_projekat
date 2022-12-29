@@ -3,6 +3,8 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 import ba.unsa.etf.rpr.domain.vrstafilma;
 
+import java.util.List;
+
 public class CategoryManager {
     public void validateCategoryName(String name ) throws filmoviException{
         if(name == null || name.length()>45 || name.length()<3){
@@ -33,6 +35,15 @@ public vrstafilma add(vrstafilma v) throws filmoviException{
                 throw new filmoviException("Ne možete obrisati kategoriju koje je povezana sa filmovima, prvo morate obrisati filmove");
             throw e;
         }
+
+        }
+        public vrstafilma update (vrstafilma v) throws filmoviException{
+        validateCategoryName(v.getZanr());
+        return DaoFactory.vrstaaDao().update(v);
+
+        }
+        public List<vrstafilma>getAll() throws filmoviException {
+        return DaoFactory.vrstaaDao().getAll();
 
         }
 
