@@ -6,4 +6,5 @@ import java.util.List;
 public interface filmoviDao extends Dao<filmovi>{
     List<filmovi> searchByName(String name) throws filmoviException;
     List<filmovi> searchByVrsta(vrstafilma z) throws filmoviException;
+    filmovi randomFilm() throws filmoviException;
 }
