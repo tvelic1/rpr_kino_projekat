@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class JdbcDao {
     private static final String DATABASE_URL = "jdbc:mysql://sql7.freemysqlhosting.net/sql7582892";
     private static final String DATABASE_USERNAME = "sql7582892";
-    private static final String DATABASE_PASSWORD = "d6MUfiLah6";
+    private static final String DATABASE_PASSWORD = "d6MUfiLahxxx";
     private static final String INSERT_QUERY = "INSERT INTO GLEDATELJI (IMEPREZIME, email, password) VALUES (?, ?, ?)";
 
 
