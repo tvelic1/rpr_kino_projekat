@@ -36,7 +36,7 @@ public class LoginController {
     private TextField emailIdField;
 
 
-    public void register(ActionEvent event) throws IOException {
+    public void register1(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/register.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);

@@ -172,7 +172,7 @@ public class RegisterController extends Application {
         }
 
 
-        public void register(ActionEvent actionEvent) throws SQLException, IOException {
+        public void register2(ActionEvent actionEvent) throws SQLException, IOException {
             Window owner = submitButton.getScene().getWindow();
 
             System.out.println(fullNameField.getText());
