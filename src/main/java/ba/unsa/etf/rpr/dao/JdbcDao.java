@@ -1,16 +1,38 @@
 package ba.unsa.etf.rpr.dao;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class JdbcDao {
     private static final String DATABASE_URL = "jdbc:mysql://sql7.freemysqlhosting.net/sql7582892";
     private static final String DATABASE_USERNAME = "sql7582892";
-    private static final String DATABASE_PASSWORD = "d6MUfiLahxxx";
+    private static final String DATABASE_PASSWORD = "d6MUfiLah6";
     private static final String INSERT_QUERY = "INSERT INTO GLEDATELJI (IMEPREZIME, email, password) VALUES (?, ?, ?)";
+    private static final String SELECT_QUERY = "SELECT * FROM GLEDATELJI WHERE email = ? and password = ?";
+
+    public boolean validate(String emailId, String password) throws SQLException {
 
 
+        try (Connection connection = DriverManager
+                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY)) {
+            preparedStatement.setString(1, emailId);
+            preparedStatement.setString(2, password);
+
+            System.out.println(preparedStatement);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return true;
+            }
+
+
+        } catch (SQLException e) {
+            // print SQL exception information
+            printSQLException(e);
+        }
+        return false;
+    }
     public void insertRecord(String fullName, String emailId, String password) throws SQLException {
 
         // Step 1: Establishing a Connection and
@@ -33,6 +55,7 @@ public class JdbcDao {
         }
     }
 
+
     public static void printSQLException(SQLException ex) {
         for (Throwable e: ex) {
             if (e instanceof SQLException) {
@@ -49,4 +72,6 @@ public class JdbcDao {
         }
     }
 }
+
+
 
