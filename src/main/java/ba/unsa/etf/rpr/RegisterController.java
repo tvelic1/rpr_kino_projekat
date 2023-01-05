@@ -4,9 +4,12 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -15,12 +18,16 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 
 public class RegisterController extends Application {
         @FXML
         private TextField fullNameField;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
         @FXML
         private TextField emailIdField;
@@ -146,6 +153,7 @@ public class RegisterController extends Application {
                     }
 
                     showAlert(Alert.AlertType.CONFIRMATION, gridPane.getScene().getWindow(), "Registration Successful!", "Welcome " + nameField.getText());
+
                 }
             });
         }
@@ -164,7 +172,7 @@ public class RegisterController extends Application {
         }
 
 
-        public void register(ActionEvent actionEvent) throws SQLException {
+        public void register(ActionEvent actionEvent) throws SQLException, IOException {
             Window owner = submitButton.getScene().getWindow();
 
             System.out.println(fullNameField.getText());
@@ -196,6 +204,12 @@ public class RegisterController extends Application {
 
             showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!",
                     "Welcome " + fullNameField.getText());
+            root = FXMLLoader.load(getClass().getResource("/login.fxml"));
+            stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            scene=new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
 
         }
     }

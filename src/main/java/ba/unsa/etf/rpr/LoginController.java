@@ -72,7 +72,7 @@ public class LoginController {
             return;
 
         } else {
-            showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!",
+            showAlert(Alert.AlertType.CONFIRMATION, owner, "Login Successful!",
                     "Welcome ");
 
         }
