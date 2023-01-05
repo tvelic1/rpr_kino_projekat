@@ -27,6 +27,9 @@ public class LoginController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private Stage stage1;
+    private Scene scene1;
+    private Parent root1;
     @FXML
     private PasswordField passwordField;
     @FXML
@@ -42,7 +45,7 @@ public class LoginController {
 
     }
 
-    public void login(ActionEvent event) throws SQLException {
+    public void login(ActionEvent event) throws SQLException, IOException {
 
         Window owner = submitButton.getScene().getWindow();
 
@@ -74,6 +77,12 @@ public class LoginController {
         } else {
             showAlert(Alert.AlertType.CONFIRMATION, owner, "Login Successful!",
                     "Welcome ");
+            root = FXMLLoader.load(getClass().getResource("/kino.fxml"));
+            stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            scene=new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
 
         }
     }
