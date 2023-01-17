@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.dao.JdbcDao;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +13,7 @@ import javafx.scene.control.Button;
 
 import java.awt.*;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import static javafx.scene.layout.BorderPane.*;
@@ -35,8 +37,15 @@ public class KinoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle){
         names= FXCollections.observableArrayList();
-        names.addAll("Horor");
+        names.addAll("Horor","romantikaa");
         listView.setItems(names);
+        JdbcDao jdbc= new JdbcDao();
+        try {
+            for(int i=0;i<names.size();i++)
+            jdbc.insert1Record(names.get(i));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
