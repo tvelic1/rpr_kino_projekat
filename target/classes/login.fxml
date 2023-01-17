@@ -40,7 +40,7 @@
             <Insets bottom="20" left="0" right="0" top="20" />
         </GridPane.margin>
     </Button>
-   <Button mnemonicParsing="false" onAction="#register" text="register here" textFill="#a13232" translateY="25.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+   <Button mnemonicParsing="false" onAction="#register1" text="register here" textFill="#a13232" translateY="25.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
       <font>
          <Font size="10.0" />
       </font></Button>

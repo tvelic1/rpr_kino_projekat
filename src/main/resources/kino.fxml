@@ -3,9 +3,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.KinoController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.KinoController">
    <children>
-      <TextField layoutY="81.0" text="welcome" />
+      <VBox prefHeight="400.0" prefWidth="108.0">
+         <children>
+            <BorderPane prefHeight="217.0" prefWidth="108.0">
+               <bottom>
+                  <ListView fx:id="listView" prefHeight="161.0" prefWidth="108.0" BorderPane.alignment="CENTER" />
+               </bottom>
+               <top>
+                  <Button mnemonicParsing="false" onAction="#add" text="Button" BorderPane.alignment="CENTER" />
+               </top>
+            </BorderPane>
+         </children>
+      </VBox>
    </children>
-</AnchorPane>
+</HBox>
