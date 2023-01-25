@@ -4,8 +4,9 @@ import java.sql.*;
 public class JdbcDao {
     private static final String DATABASE_URL = "jdbc:mysql://sql7.freemysqlhosting.net/sql7582892";
     private static final String DATABASE_USERNAME = "sql7582892";
-    private static final String DATABASE_PASSWORD = "d6MUfiLahxxxx";
+    private static final String DATABASE_PASSWORD = "d6MUfiLahxx";
     private static final String INSERT_QUERY = "INSERT INTO GLEDATELJI (IMEPREZIME, email, password) VALUES (?, ?, ?)";
+    private static final String INSERT1_QUERY = "INSERT INTO vrstafilma (zanr) VALUES (?)";
     private static final String SELECT_QUERY = "SELECT * FROM GLEDATELJI WHERE email = ? and password = ?";
 
     public boolean validate(String emailId, String password) throws SQLException {
@@ -54,9 +55,30 @@ public class JdbcDao {
             printSQLException(e);
         }
     }
+    public void insert1Record(String fullName) throws SQLException {
+
+        // Step 1: Establishing a Connection and
+        // try-with-resource statement will auto close the connection.
+        try (Connection connection = DriverManager
+                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+             // Step 2:Create a statement using connection object
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT1_QUERY)) {
+            preparedStatement.setString(1, fullName);
 
 
-    public static void printSQLException(SQLException ex) {
+            System.out.println(preparedStatement);
+            // Step 3: Execute the query or update query
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            // print SQL exception information
+            printSQLException(e);
+        }
+    }
+
+
+
+        public static void printSQLException(SQLException ex) {
         for (Throwable e: ex) {
             if (e instanceof SQLException) {
                 e.printStackTrace(System.err);
