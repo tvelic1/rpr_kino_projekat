@@ -56,7 +56,7 @@ public class filmoviDaoSQLImpl extends AbstractDao<filmovi> implements filmoviDa
         }
     }
     @Override
-    public List<filmovi> searchByVrsta(vrstafilma v) throws filmoviException{
+    public List<filmovi> searchByCategory(vrstafilma v) throws filmoviException{
         String q="SELECT * FROM filmovi WHERE id_vrsta_filma=?";
         try{
             PreparedStatement st=getCon().prepareStatement(q);
