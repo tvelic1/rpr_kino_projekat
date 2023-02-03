@@ -8,7 +8,7 @@ import java.sql.*;
 public class JdbcDao {
     private static final String DATABASE_URL = "jdbc:mysql://sql7.freemysqlhosting.net/sql7582892";
     private static final String DATABASE_USERNAME = "sql7582892";
-    private static final String DATABASE_PASSWORD = "d6MUfiLah6";
+    private static final String DATABASE_PASSWORD = "d6MUfiLahxx";
     private static final String INSERT_QUERY = "INSERT INTO GLEDATELJI (IMEPREZIME, email, password) VALUES (?, ?, ?)";
     private static final String INSERT1_QUERY = "INSERT INTO vrstafilma (zanr) VALUES (?)";
     private static final String SELECT_QUERY = "SELECT * FROM GLEDATELJI WHERE email = ? and password = ?";
