@@ -18,5 +18,12 @@
             <ListView fx:id="listView" prefHeight="468.0" prefWidth="108.0" />
          </children>
       </VBox>
+      <TableView prefHeight="400.0" prefWidth="306.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+            <TableColumn prefWidth="75.0" text="c3" />
+        </columns>
+      </TableView>
    </children>
 </HBox>
