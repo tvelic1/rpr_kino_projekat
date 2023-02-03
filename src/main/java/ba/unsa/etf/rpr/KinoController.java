@@ -37,15 +37,14 @@ public class KinoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle){
         names= FXCollections.observableArrayList();
-        names.addAll("Horor","Romantika");
-        listView.setItems(names);
         JdbcDao jdbc= new JdbcDao();
         try {
-            for(int i=0;i<names.size();i++)
-            jdbc.insert1Record(names.get(i));
+            jdbc.getIntoListView(names);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        listView.setItems(names);
+
     }
 
 
