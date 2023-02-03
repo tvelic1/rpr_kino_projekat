@@ -3,7 +3,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.KinoController">
    <center>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="600.0">
@@ -21,14 +20,15 @@
                   <ListView fx:id="listView" prefHeight="468.0" prefWidth="108.0" />
                </children>
             </VBox>
-            <TableView prefHeight="298.0" prefWidth="294.0">
+            <TableView fx:id="tableview" prefHeight="424.0" prefWidth="379.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
-                  <TableColumn prefWidth="75.0" text="c3" />
+                <TableColumn fx:id="id1" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="ocjena" prefWidth="75.0" text="Ocjena" />
+                  <TableColumn fx:id="trajanje" prefWidth="75.0" text="Trajanje" />
+                  <TableColumn fx:id="ime" prefWidth="75.0" text="Ime filma" />
               </columns>
             </TableView>
-            <BorderPane prefHeight="484.0" prefWidth="204.0" />
+            <BorderPane prefHeight="424.0" prefWidth="0.0" />
          </children>
       </HBox>
    </center>

@@ -2,10 +2,12 @@ package ba.unsa.etf.rpr.domain;
 import java.util.*;
 
 public class filmovi implements Idable {
-    private int idfilma;
-    private static String ocjena;
 
-    private static int trajanje;
+
+    private int idfilma;
+    private   String ocjena;
+
+    private int trajanje;
     private String ime;
     private vrstafilma id_vrsta_filma;
 
@@ -17,7 +19,7 @@ public class filmovi implements Idable {
         this.idfilma = idfilma;
     }
 
-    public static String getOcjena() {
+    public  String getOcjena() {
         return ocjena;
     }
 
@@ -25,7 +27,7 @@ public class filmovi implements Idable {
         this.ocjena = ocjena;
     }
 
-    public static int getTrajanje() {
+    public  int getTrajanje() {
         return trajanje;
     }
 

@@ -9,9 +9,11 @@ import java.util.*;
 public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
     private Connection con;
     private String tableName;
+    private String idName;
 
-    public AbstractDao(String tableName){
+    public AbstractDao(String tableName,String idName){
         try{ this.tableName=tableName;
+            this.idName=idName;
             FileReader fr=new FileReader("src/main/resources/db.properties");
             Properties p=new Properties();
             p.load(fr);
@@ -28,12 +30,17 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
     public Connection getCon(){
         return this.con;
     }
+    public void setConnection(Connection con){
+        this.con=con;
+    }
     public abstract T row2object(ResultSet rs) throws filmoviException;
 
     public abstract Map<String, Object> object2row(T object);
 
     public T getById(int id) throws filmoviException{
-        String query="SELECT * FROM "+tableName+"WHERE id=?";
+
+        String query="SELECT * FROM "+tableName+" WHERE id" + this.tableName + " = ?";
+       // System.out.println("Query za getById " + query);
         try{
             PreparedStatement st=this.con.prepareStatement(query);
             st.setInt(1,id);
@@ -68,7 +75,7 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
     }
 
     public void delete(int id) throws filmoviException{
-        String q="DELETE FROM "+tableName+" WHERE id=?";
+        String q="DELETE FROM "+tableName+" WHERE"+this.idName+"=?";
         try{
             PreparedStatement st=getCon().prepareStatement(q,Statement.RETURN_GENERATED_KEYS);
             st.setObject(1,id);

@@ -10,13 +10,13 @@ import java.util.Properties;
 
 public class vrstafilmaDaoSQLImpl extends AbstractDao<vrstafilma> implements vrstafilmaDao {
     public vrstafilmaDaoSQLImpl(){
-        super("vrstafilma");
+        super("vrstafilma","id");
     }
     @Override
     public vrstafilma row2object(ResultSet rs) throws filmoviException{
         try{
             vrstafilma v=new vrstafilma();
-            v.setId(rs.getInt("id"));
+            v.setId(rs.getInt("idvrstafilma"));
             v.setZanr(rs.getString("zanr"));
             return v;
         }catch(SQLException e){

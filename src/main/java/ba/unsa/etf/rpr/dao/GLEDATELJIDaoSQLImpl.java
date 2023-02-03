@@ -9,7 +9,7 @@ import java.util.*;
 public class GLEDATELJIDaoSQLImpl extends AbstractDao<GLEDATELJI> implements  GLEDATELJIDao{
 
     public GLEDATELJIDaoSQLImpl(){
-        super("GLEDATELJI");
+        super("GLEDATELJI","id");
     }
     @Override
     public GLEDATELJI row2object(ResultSet rs) throws filmoviException{

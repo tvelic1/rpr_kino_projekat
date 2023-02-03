@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 
 public class filmoviDaoSQLImpl extends AbstractDao<filmovi> implements filmoviDao {
     public filmoviDaoSQLImpl(){
-        super("filmovi");
+        super("filmovi","idfilma");
     }
     @Override
     public filmovi row2object(ResultSet rs) throws filmoviException{

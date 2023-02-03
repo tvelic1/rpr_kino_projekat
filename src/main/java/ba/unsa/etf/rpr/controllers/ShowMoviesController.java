@@ -21,7 +21,7 @@ public class ShowMoviesController {
     @FXML
     public void initialize() {
         text.setText(film.getIme());
-        ocjena.setText(filmovi.getOcjena());
+        //ocjena.setText(filmovi.getOcjena());
     }
 
     public void okBtnAction(ActionEvent actionEvent) {
