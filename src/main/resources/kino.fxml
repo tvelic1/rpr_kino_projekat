@@ -3,27 +3,54 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.KinoController">
-   <children>
-      <VBox prefHeight="400.0" prefWidth="108.0">
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.KinoController">
+   <center>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="600.0">
          <children>
-            <BorderPane prefHeight="217.0" prefWidth="108.0">
-               <bottom>
-                  <TextField fx:id="tekst" BorderPane.alignment="CENTER" />
-               </bottom>
-               <center>
-                  <Button fx:id="addbutton" mnemonicParsing="false" onAction="#addcat" text="ADD" BorderPane.alignment="CENTER" />
-               </center>
-            </BorderPane>
-            <ListView fx:id="listView" prefHeight="468.0" prefWidth="108.0" />
+            <VBox prefHeight="400.0" prefWidth="108.0">
+               <children>
+                  <BorderPane prefHeight="217.0" prefWidth="108.0">
+                     <bottom>
+                        <TextField fx:id="tekst" BorderPane.alignment="CENTER" />
+                     </bottom>
+                     <center>
+                        <Button fx:id="addbutton" mnemonicParsing="false" onAction="#addcat" text="ADD" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <ListView fx:id="listView" prefHeight="468.0" prefWidth="108.0" />
+               </children>
+            </VBox>
+            <TableView prefHeight="298.0" prefWidth="294.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+                  <TableColumn prefWidth="75.0" text="c3" />
+              </columns>
+            </TableView>
+            <BorderPane prefHeight="484.0" prefWidth="204.0" />
          </children>
-      </VBox>
-      <TableView prefHeight="400.0" prefWidth="306.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-            <TableColumn prefWidth="75.0" text="c3" />
-        </columns>
-      </TableView>
-   </children>
-</HBox>
+      </HBox>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
