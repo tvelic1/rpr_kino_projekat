@@ -9,12 +9,13 @@
          <children>
             <BorderPane prefHeight="217.0" prefWidth="108.0">
                <bottom>
-                  <ListView fx:id="listView" prefHeight="161.0" prefWidth="108.0" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="tekst" BorderPane.alignment="CENTER" />
                </bottom>
-               <top>
-                  <Button mnemonicParsing="false" onAction="#add" text="Button" BorderPane.alignment="CENTER" />
-               </top>
+               <center>
+                  <Button fx:id="addbutton" mnemonicParsing="false" onAction="#addcat" text="ADD" BorderPane.alignment="CENTER" />
+               </center>
             </BorderPane>
+            <ListView fx:id="listView" prefHeight="468.0" prefWidth="108.0" />
          </children>
       </VBox>
    </children>

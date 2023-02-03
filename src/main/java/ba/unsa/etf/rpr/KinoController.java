@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -19,6 +20,7 @@ import java.util.ResourceBundle;
 import static javafx.scene.layout.BorderPane.*;
 
 public class KinoController implements Initializable {
+    public TextField tekst;
     private ObservableList<String> names;
     public Button closeButton;
     public ListView<String> listView;
@@ -49,6 +51,12 @@ public class KinoController implements Initializable {
 
 
 
-    public void add(ActionEvent actionEvent) {
+
+
+    public void addcat(ActionEvent actionEvent) {
+        //Object tekst;
+        names.add(tekst.getText());
+        JdbcDao j=new JdbcDao();
+        j.insertIntoCategory(tekst.getText());
     }
 }
