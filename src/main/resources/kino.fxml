@@ -26,6 +26,7 @@
                 <TableColumn fx:id="ocjena" prefWidth="75.0" text="Ocjena" />
                   <TableColumn fx:id="trajanje" prefWidth="75.0" text="Trajanje" />
                   <TableColumn fx:id="ime" prefWidth="75.0" text="Ime filma" />
+                  <TableColumn fx:id="ajdi" prefWidth="75.0" text="id category" />
               </columns>
             </TableView>
             <BorderPane prefHeight="424.0" prefWidth="0.0" />

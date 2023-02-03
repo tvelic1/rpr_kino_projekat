@@ -46,6 +46,7 @@ public class filmovi implements Idable {
     public vrstafilma getId_vrsta_filma() {
         return id_vrsta_filma;
     }
+    public int getId_vrsta_filma1(){return id_vrsta_filma.getId();}
 
     public void setId_vrsta_filma(vrstafilma id_vrsta_filma) {
         this.id_vrsta_filma = id_vrsta_filma;

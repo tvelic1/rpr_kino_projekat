@@ -34,6 +34,7 @@ public class KinoController  {
     public TableColumn<filmovi,Integer> trajanje;
     public TableColumn<filmovi,String> ocjena;
     public TableColumn<filmovi,String>ime;
+    public TableColumn<filmovi,Integer> ajdi;
 
     private ObservableList<String> names;
     public Button closeButton;
@@ -61,7 +62,7 @@ public class KinoController  {
         ocjena.setCellValueFactory(new PropertyValueFactory<filmovi, String>("ocjena"));
         trajanje.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getTrajanje()).asObject();});
         ime.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleStringProperty(filmovi.getIme());});
-
+        ajdi.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getId_vrsta_filma1()).asObject();});
         tableview.setItems(FXCollections.observableList(manager.getAll()));
         names= FXCollections.observableArrayList();
         JdbcDao jdbc= new JdbcDao();
