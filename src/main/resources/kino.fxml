@@ -22,10 +22,10 @@
             </VBox>
             <TableView fx:id="tableview" prefHeight="424.0" prefWidth="299.0">
               <columns>
-                <TableColumn fx:id="id1" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="ocjena" prefWidth="75.0" text="Ocjena" />
-                  <TableColumn fx:id="trajanje" prefWidth="75.0" text="Trajanje" />
-                  <TableColumn fx:id="ime" prefWidth="75.0" text="Film" />
+                <TableColumn fx:id="id1" prefWidth="53.199989318847656" text="ID" />
+                <TableColumn fx:id="ocjena" prefWidth="57.600006103515625" text="Ocjena" />
+                  <TableColumn fx:id="trajanje" maxWidth="126.39999389648438" prefWidth="84.39996337890625" text="Trajanje(min)" />
+                  <TableColumn fx:id="ime" minWidth="0.0" prefWidth="103.60003662109375" text="Film" />
               </columns>
             </TableView>
             <BorderPane prefHeight="424.0" prefWidth="0.0" />
