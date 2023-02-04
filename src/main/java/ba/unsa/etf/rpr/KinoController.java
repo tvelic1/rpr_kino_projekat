@@ -10,12 +10,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -110,5 +115,16 @@ public class KinoController  {
     public void search(ActionEvent actionEvent) throws filmoviException {
         ObservableList<filmovi>items=FXCollections.observableList(manager.search(text.getText()));
         tableview.setItems(items);
+    }
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+    public void logut(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/login.fxml"));
+        stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
