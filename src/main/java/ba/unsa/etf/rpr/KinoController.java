@@ -29,6 +29,7 @@ public class KinoController  {
     public TableColumn<filmovi,String>ime;
     public TableColumn<filmovi,Integer> ajdi;
     public TextField text;
+    public Button addbutton;
 
     private ObservableList<String> names;
     public Button closeButton;
@@ -103,6 +104,7 @@ public class KinoController  {
         names.add(tekst.getText());
         JdbcDao j=new JdbcDao();
         j.insertIntoCategory(tekst.getText());
+        tekst.setText("");
     }
 
     public void search(ActionEvent actionEvent) throws filmoviException {
