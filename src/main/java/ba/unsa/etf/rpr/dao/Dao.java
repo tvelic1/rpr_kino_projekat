@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface Dao<tip> {
     List<tip> getAll() throws filmoviException;
+    List<tip> getFiltered(int a) throws filmoviException;
     void delete(int id) throws filmoviException;
     tip getById(int id) throws filmoviException;
     tip add(tip item) throws filmoviException;
