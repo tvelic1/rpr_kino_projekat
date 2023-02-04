@@ -7,8 +7,8 @@ import java.sql.*;
 
 public class JdbcDao {
     private static final String DATABASE_URL = "jdbc:mysql://sql7.freemysqlhosting.net/sql7582892";
-    private static final String DATABASE_USERNAME = "sql7582892";
-    private static final String DATABASE_PASSWORD = "d6MUfiLahxx";
+    private static final String DATABASE_USERNAME = "sql758289x";
+    private static final String DATABASE_PASSWORD = "d6MUfiLahx";
     private static final String INSERT_QUERY = "INSERT INTO GLEDATELJI (IMEPREZIME, email, password) VALUES (?, ?, ?)";
     private static final String INSERT1_QUERY = "INSERT INTO vrstafilma (zanr) VALUES (?)";
     private static final String SELECT_QUERY = "SELECT * FROM GLEDATELJI WHERE email = ? and password = ?";
@@ -140,6 +140,18 @@ public class JdbcDao {
             throw new RuntimeException(e);
         }
     }
+    public static int getCatId(String name) throws SQLException {
+        Connection con=DriverManager.getConnection(DATABASE_URL,DATABASE_USERNAME,DATABASE_PASSWORD);
+        PreparedStatement ps=con.prepareStatement("SELECT idvrstafilma FROM vrstafilma WHERE zanr = ?");
+        ps.setString(1,name);
+        ResultSet rs=ps.executeQuery();
+        if(rs.next()){
+            int a=rs.getInt(1);
+            return a;
+        }else return -1;
+
+    }
+
 
     }
 

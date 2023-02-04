@@ -55,7 +55,7 @@ public class KinoController  {
         ocjena.setCellValueFactory(new PropertyValueFactory<filmovi, String>("ocjena"));
         trajanje.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getTrajanje()).asObject();});
         ime.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleStringProperty(filmovi.getIme());});
-        ajdi.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getId_vrsta_filma1()).asObject();});
+        //ajdi.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getId_vrsta_filma1()).asObject();});
         tableview.setItems(FXCollections.observableList(manager.getAll()));
         names= FXCollections.observableArrayList();
         JdbcDao jdbc= new JdbcDao();
@@ -80,7 +80,7 @@ public class KinoController  {
                 ocjena.setCellValueFactory(new PropertyValueFactory<filmovi, String>("ocjena"));
                 trajanje.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getTrajanje()).asObject();});
                 ime.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleStringProperty(filmovi.getIme());});
-                ajdi.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getId_vrsta_filma1()).asObject();});
+              //  ajdi.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getId_vrsta_filma1()).asObject();});
                 try {
                     tableview.setItems(FXCollections.observableList(manager.getFiltered(a.get())));
                 } catch (filmoviException e) {
