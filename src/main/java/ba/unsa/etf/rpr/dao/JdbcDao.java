@@ -3,21 +3,27 @@ import ba.unsa.etf.rpr.domain.filmovi;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
 
 public class JdbcDao {
-    private static final String DATABASE_URL = "jdbc:mysql://sql7.freemysqlhosting.net/sql7582892";
-    private static final String DATABASE_USERNAME = "sql758289x";
-    private static final String DATABASE_PASSWORD = "d6MUfiLahx";
+
+
+
     private static final String INSERT_QUERY = "INSERT INTO GLEDATELJI (IMEPREZIME, email, password) VALUES (?, ?, ?)";
     private static final String INSERT1_QUERY = "INSERT INTO vrstafilma (zanr) VALUES (?)";
     private static final String SELECT_QUERY = "SELECT * FROM GLEDATELJI WHERE email = ? and password = ?";
+
+
 
     public boolean validate(String emailId, String password) throws SQLException {
 
 
         try (Connection connection = DriverManager
-                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                .getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
 
 
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY)) {
@@ -43,7 +49,7 @@ public class JdbcDao {
         // Step 1: Establishing a Connection and
         // try-with-resource statement will auto close the connection.
         try (Connection connection = DriverManager
-                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                .getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
 
              // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUERY)) {
@@ -64,7 +70,7 @@ public class JdbcDao {
         // Step 1: Establishing a Connection and
         // try-with-resource statement will auto close the connection.
         try (Connection connection = DriverManager
-                .getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+                .getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
 
              // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT1_QUERY)) {
@@ -81,7 +87,7 @@ public class JdbcDao {
     }
     public static void getIntoListView(ObservableList<String> value) throws SQLException{
        // Object PreparedStatement;
-        try(Connection connection=DriverManager.getConnection(DATABASE_URL,DATABASE_USERNAME,DATABASE_PASSWORD);
+        try(Connection connection=DriverManager.getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
             PreparedStatement ps= connection.prepareStatement("SELECT * FROM vrstafilma")){
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
@@ -94,7 +100,7 @@ public class JdbcDao {
         }
     }
     public static void insertIntoCategory(String name){
-        try(Connection con=DriverManager.getConnection(DATABASE_URL,DATABASE_USERNAME,DATABASE_PASSWORD);
+        try(Connection con=DriverManager.getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
 
             PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO vrstafilma (zanr) VALUES (?)")) {
             preparedStatement.setString(1, name);
@@ -129,7 +135,7 @@ public class JdbcDao {
     public static ObservableList<Integer> ab(ObservableList<Integer> a){
         try{
 
-            Connection con=DriverManager.getConnection(DATABASE_URL,DATABASE_USERNAME,DATABASE_PASSWORD);
+            Connection con=DriverManager.getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
             PreparedStatement ps=con.prepareStatement("SELECT idfilma FROM filmovi");
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
@@ -141,14 +147,16 @@ public class JdbcDao {
         }
     }
     public static int getCatId(String name) throws SQLException {
-        Connection con=DriverManager.getConnection(DATABASE_URL,DATABASE_USERNAME,DATABASE_PASSWORD);
+        Connection con=DriverManager.getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
         PreparedStatement ps=con.prepareStatement("SELECT idvrstafilma FROM vrstafilma WHERE zanr = ?");
         ps.setString(1,name);
         ResultSet rs=ps.executeQuery();
         if(rs.next()){
             int a=rs.getInt(1);
             return a;
+
         }else return -1;
+
 
     }
 
