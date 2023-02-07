@@ -128,13 +128,7 @@ public class KinoController  {
     private Scene scene;
     private Parent root;
 
-    public void logut(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/login.fxml"));
-        stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    } CategoryManager man=new CategoryManager();
+    CategoryManager man=new CategoryManager();
     FilmoviManager fii=new FilmoviManager();
 
     public void adddd(ActionEvent actionEvent) throws filmoviException {
@@ -159,5 +153,20 @@ public class KinoController  {
                 f.setIme(imeee.getText());
                 fii.add(f);
                 tableview.setItems(FXCollections.observableList(fii.getAll()));
+    }
+
+    public void clear(ActionEvent actionEvent) {
+        trajanjee.setText("");
+        zaanr.setText("");
+        imeee.setText("");
+        ocjenaa.setText("");
+    }
+
+    public void logoutt(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/login.fxml"));
+        stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
