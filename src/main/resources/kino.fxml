@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.KinoController">
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.KinoController">
    <center>
       <BorderPane>
          <center>
@@ -68,4 +59,15 @@
         </menus>
       </MenuBar>
    </top>
+   <right>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="122.0" layoutY="350.0" mnemonicParsing="false" onAction="#adddd" text="Button" />
+            <TextField fx:id="zaanr" layoutX="8.0" layoutY="92.0" />
+            <TextField fx:id="trajanjee" layoutX="8.0" layoutY="155.0" />
+            <TextField fx:id="ocjenaa" layoutX="8.0" layoutY="212.0" />
+            <TextField fx:id="imeee" layoutX="8.0" layoutY="266.0" />
+         </children>
+      </AnchorPane>
+   </right>
 </BorderPane>

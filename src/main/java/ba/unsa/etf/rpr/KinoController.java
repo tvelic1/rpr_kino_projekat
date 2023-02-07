@@ -1,8 +1,10 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.business.CategoryManager;
 import ba.unsa.etf.rpr.business.FilmoviManager;
 import ba.unsa.etf.rpr.dao.JdbcDao;
 import ba.unsa.etf.rpr.domain.filmovi;
+import ba.unsa.etf.rpr.domain.vrstafilma;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -22,6 +24,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class KinoController  {
@@ -35,6 +39,10 @@ public class KinoController  {
     public TableColumn<filmovi,Integer> ajdi;
     public TextField text;
     public Button addbutton;
+    public TextField trajanjee;
+    public TextField zaanr;
+    public TextField ocjenaa;
+    public TextField imeee;
 
     private ObservableList<String> names;
     public Button closeButton;
@@ -126,5 +134,30 @@ public class KinoController  {
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
+    } CategoryManager man=new CategoryManager();
+    FilmoviManager fii=new FilmoviManager();
+
+    public void adddd(ActionEvent actionEvent) throws filmoviException {
+        filmovi f=new filmovi();
+        vrstafilma v=new vrstafilma();
+        boolean e=false;
+        v.setZanr(zaanr.getText());
+        List<vrstafilma> cat=new ArrayList<>(man.getAll());
+                for(vrstafilma vrr:cat){
+                    if(vrr.getZanr().equals(v.getZanr())){
+                        e=true;
+                        v=vrr;
+                        break;
+                    }
+
+                }
+                if(!e) v=man.add(v);
+
+                f.setId_vrsta_filma(v);
+                f.setOcjena(ocjenaa.getText());
+                f.setTrajanje(Integer.parseInt(trajanjee.getText()));
+                f.setIme(imeee.getText());
+                fii.add(f);
+                tableview.setItems(FXCollections.observableList(fii.getAll()));
     }
 }
