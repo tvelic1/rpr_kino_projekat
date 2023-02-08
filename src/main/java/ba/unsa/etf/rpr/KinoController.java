@@ -37,7 +37,7 @@ public class KinoController  {
     public TableColumn<filmovi,Integer> trajanje;
     public TableColumn<filmovi,String> ocjena;
     public TableColumn<filmovi,String>ime;
-    public TableColumn<filmovi,Integer> ajdi;
+    //public TableColumn<filmovi,Integer> ajdi;
     public TextField text;
     public Button addbutton;
 
@@ -92,12 +92,7 @@ public class KinoController  {
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
-               /* id1.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getId()).asObject();
-                });
-                ocjena.setCellValueFactory(new PropertyValueFactory<filmovi, String>("ocjena"));
-                trajanje.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getTrajanje()).asObject();});
-                ime.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleStringProperty(filmovi.getIme());});
-              *///  ajdi.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getId_vrsta_filma1()).asObject();});
+
                 try {
                     tableview.setItems(FXCollections.observableList(manager.getFiltered(a.get())));
                 } catch (filmoviException e) {
@@ -134,7 +129,8 @@ public class KinoController  {
     FilmoviManager fii=new FilmoviManager();
 
     public void adddd(ActionEvent actionEvent) throws filmoviException {
-        if(!zaanr.getText().isEmpty() && !ocjenaa.getText().isEmpty() && !trajanjee.getText().isEmpty() && !imeee.getText().isEmpty()){
+        ObservableList<filmovi>itemss=FXCollections.observableList(manager.search(imeee.getText()));
+        if(itemss.isEmpty()&&!zaanr.getText().isEmpty() && !ocjenaa.getText().isEmpty() && !trajanjee.getText().isEmpty() && !imeee.getText().isEmpty()){
         filmovi f=new filmovi();
         vrstafilma v=new vrstafilma();
         boolean e=false;
@@ -155,7 +151,12 @@ public class KinoController  {
                 f.setTrajanje(Integer.parseInt(trajanjee.getText()));
                 f.setIme(imeee.getText());
                 fii.add(f);
-                tableview.setItems(FXCollections.observableList(fii.getAll()));}}
+                tableview.setItems(FXCollections.observableList(fii.getAll()));
+                zaanr.setText("");
+                ocjenaa.setText("");
+                imeee.setText("");
+                trajanjee.setText("");
+           }}
     }
 
     public void clear(ActionEvent actionEvent) {
