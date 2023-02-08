@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.KinoController">
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.KinoController">
    <center>
       <BorderPane>
          <center>
@@ -27,7 +17,10 @@
                               <TextField fx:id="tekst" prefHeight="23.0" prefWidth="108.0" BorderPane.alignment="CENTER" />
                            </bottom>
                            <center>
-                              <Button fx:id="addbutton" mnemonicParsing="false" onAction="#addcat" prefHeight="26.0" prefWidth="107.0" text="Add category" BorderPane.alignment="CENTER" />
+                              <Button fx:id="addbutton" mnemonicParsing="false" onAction="#addcat" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: chartreuse;" text="Add category" BorderPane.alignment="CENTER">
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding></Button>
                            </center>
                         </BorderPane>
                         <ListView fx:id="listView" prefHeight="374.0" prefWidth="0.0" />
@@ -70,19 +63,19 @@
    <right>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="125.0" layoutY="313.0" mnemonicParsing="false" onAction="#adddd" prefHeight="26.0" prefWidth="60.0" text="Add" translateX="-115.0" />
+            <Button layoutX="125.0" layoutY="313.0" mnemonicParsing="false" onAction="#adddd" prefHeight="26.0" prefWidth="60.0" style="-fx-background-color: red;" text="Add" translateX="-115.0" />
             <TextField fx:id="zaanr" layoutX="30.0" layoutY="91.0" prefHeight="26.0" prefWidth="155.0" translateX="-100.0" />
             <TextField fx:id="trajanjee" layoutX="30.0" layoutY="152.0" prefHeight="26.0" prefWidth="155.0" translateX="-100.0" />
             <TextField fx:id="ocjenaa" layoutX="30.0" layoutY="212.0" prefHeight="26.0" prefWidth="155.0" translateX="-100.0" />
             <TextField fx:id="imeee" layoutX="30.0" layoutY="266.0" prefHeight="26.0" prefWidth="155.0" translateX="-100.0" />
-            <Label layoutX="-75.0" layoutY="95.0" prefHeight="18.0" prefWidth="72.0" text="Unesite zanr" translateX="-100.0" />
-            <Label layoutX="-12.0" layoutY="156.0" prefHeight="18.0" prefWidth="82.0" text="Unesite trajanje" translateX="-175.0" />
-            <Label layoutX="-84.0" layoutY="216.0" prefHeight="18.0" prefWidth="85.0" text="Unesite ocjenu" translateX="-100.0" />
-            <Label layoutX="128.0" layoutY="270.0" prefHeight="18.0" prefWidth="68.0" text="Unesite ime" translateX="-300.0" />
-            <Button layoutX="48.0" layoutY="313.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="60.0" text="Clear" translateX="-120.0" />
-            <Button layoutX="138.0" layoutY="384.0" mnemonicParsing="false" onAction="#logoutt" text="Logout" />
+            <Label layoutX="-75.0" layoutY="95.0" prefHeight="18.0" prefWidth="72.0" text="Unesite zanr" translateX="-75.0" />
+            <Label layoutX="-12.0" layoutY="156.0" prefHeight="18.0" prefWidth="82.0" text="Unesite trajanje" translateX="-150.0" />
+            <Label layoutX="-84.0" layoutY="216.0" prefHeight="18.0" prefWidth="85.0" text="Unesite ocjenu" translateX="-75.0" />
+            <Label layoutX="128.0" layoutY="270.0" prefHeight="18.0" prefWidth="68.0" text="Unesite ime" translateX="-275.0" />
+            <Button layoutX="48.0" layoutY="313.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="60.0" style="-fx-background-color: ;" text="Clear" translateX="-120.0" />
+            <Button layoutX="138.0" layoutY="384.0" mnemonicParsing="false" onAction="#logoutt" style="-fx-background-color: aqua;" text="Logout" />
             <TextField fx:id="text" layoutX="10.0" layoutY="28.0" translateX="-150.0" translateY="-10.0" />
-            <Button layoutX="8.0" layoutY="18.0" mnemonicParsing="false" onAction="#search" text="Search" />
+            <Button layoutX="8.0" layoutY="18.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: lemonchiffon;" text="Search" />
          </children>
       </AnchorPane>
    </right>

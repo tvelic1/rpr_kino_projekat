@@ -20,6 +20,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -39,6 +40,7 @@ public class KinoController  {
     public TableColumn<filmovi,Integer> ajdi;
     public TextField text;
     public Button addbutton;
+
     public TextField trajanjee;
     public TextField zaanr;
     public TextField ocjenaa;
@@ -113,7 +115,7 @@ public class KinoController  {
 
 
     public void addcat(ActionEvent actionEvent) {
-        if(!names.contains(tekst.getText()))
+        if(!names.contains(tekst.getText()) && !tekst.getText().isEmpty())
         {names.add(tekst.getText());
         JdbcDao j=new JdbcDao();
         j.insertIntoCategory(tekst.getText());}
@@ -132,6 +134,7 @@ public class KinoController  {
     FilmoviManager fii=new FilmoviManager();
 
     public void adddd(ActionEvent actionEvent) throws filmoviException {
+        if(!zaanr.getText().isEmpty() && !ocjenaa.getText().isEmpty() && !trajanjee.getText().isEmpty() && !imeee.getText().isEmpty()){
         filmovi f=new filmovi();
         vrstafilma v=new vrstafilma();
         boolean e=false;
@@ -152,7 +155,7 @@ public class KinoController  {
                 f.setTrajanje(Integer.parseInt(trajanjee.getText()));
                 f.setIme(imeee.getText());
                 fii.add(f);
-                tableview.setItems(FXCollections.observableList(fii.getAll()));}
+                tableview.setItems(FXCollections.observableList(fii.getAll()));}}
     }
 
     public void clear(ActionEvent actionEvent) {
@@ -169,4 +172,5 @@ public class KinoController  {
         stage.setScene(scene);
         stage.show();
     }
+
 }
