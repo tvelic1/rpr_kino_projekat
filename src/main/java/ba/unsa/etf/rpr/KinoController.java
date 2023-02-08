@@ -172,6 +172,12 @@ public class KinoController  {
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
+    } FilmoviManager fm=new FilmoviManager();
 
+    public void delete(ActionEvent actionEvent) throws filmoviException {
+       filmovi film = (filmovi) tableview.getSelectionModel().getSelectedItem();
+       int a=film.getId();
+        fm.delete(a);
+        tableview.setItems(FXCollections.observableList(fm.getAll()));
+    }
 }

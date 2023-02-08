@@ -76,6 +76,7 @@
             <Button layoutX="138.0" layoutY="384.0" mnemonicParsing="false" onAction="#logoutt" style="-fx-background-color: aqua;" text="Logout" />
             <TextField fx:id="text" layoutX="10.0" layoutY="28.0" translateX="-150.0" translateY="-10.0" />
             <Button layoutX="8.0" layoutY="18.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: lemonchiffon;" text="Search" />
+            <Button layoutX="19.0" layoutY="384.0" mnemonicParsing="false" onAction="#delete" text="Delete" translateX="-200.0" translateY="5.0" />
          </children>
       </AnchorPane>
    </right>
