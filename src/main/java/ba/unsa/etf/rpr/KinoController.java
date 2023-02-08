@@ -146,13 +146,13 @@ public class KinoController  {
 
                 }
                 if(!e) v=man.add(v);
-
-                f.setId_vrsta_filma(v);
+           if(!zaanr.getText().isEmpty() && !ocjenaa.getText().isEmpty() && !trajanjee.getText().isEmpty() && !imeee.getText().isEmpty())
+           {  f.setId_vrsta_filma(v);
                 f.setOcjena(ocjenaa.getText());
                 f.setTrajanje(Integer.parseInt(trajanjee.getText()));
                 f.setIme(imeee.getText());
                 fii.add(f);
-                tableview.setItems(FXCollections.observableList(fii.getAll()));
+                tableview.setItems(FXCollections.observableList(fii.getAll()));}
     }
 
     public void clear(ActionEvent actionEvent) {
