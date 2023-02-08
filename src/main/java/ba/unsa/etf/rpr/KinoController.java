@@ -113,10 +113,10 @@ public class KinoController  {
 
 
     public void addcat(ActionEvent actionEvent) {
-        //Object tekst;
-        names.add(tekst.getText());
+        if(!names.contains(tekst.getText()))
+        {names.add(tekst.getText());
         JdbcDao j=new JdbcDao();
-        j.insertIntoCategory(tekst.getText());
+        j.insertIntoCategory(tekst.getText());}
         tekst.setText("");
     }
 
