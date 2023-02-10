@@ -1,9 +1,7 @@
 package ba.unsa.etf.rpr.dao;
-import ba.unsa.etf.rpr.domain.filmovi;
-import javafx.collections.ObservableList;
-import javafx.scene.control.ListView;
 
-import java.io.FileNotFoundException;
+import javafx.collections.ObservableList;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
@@ -32,7 +30,6 @@ public class JdbcDao {
         try (Connection connection = DriverManager
                 .getConnection(p.getProperty("url"),p.getProperty("user"),p.getProperty("password"));
 
-
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY)) {
             preparedStatement.setString(1, emailId);
             preparedStatement.setString(2, password);
@@ -46,7 +43,6 @@ public class JdbcDao {
 
 
         } catch (SQLException e) {
-            // print SQL exception information
             printSQLException(e);
         }
         return false;
