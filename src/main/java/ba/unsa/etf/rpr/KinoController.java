@@ -66,13 +66,13 @@ public class KinoController  {
 
     @FXML
     public void initialize() throws filmoviException{
-        //ime.setCellValueFactory(new PropertyValueFactory<filmovi, String>("IME"));
+
         id1.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getId()).asObject();
         });
         ocjena.setCellValueFactory(new PropertyValueFactory<filmovi, String>("ocjena"));
         trajanje.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getTrajanje()).asObject();});
         ime.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleStringProperty(filmovi.getIme());});
-        //ajdi.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getId_vrsta_filma1()).asObject();});
+
         tableview.setItems(FXCollections.observableList(manager.getAll()));
         names= FXCollections.observableArrayList();
        // JdbcDao jdbc= new JdbcDao();
@@ -182,6 +182,10 @@ public class KinoController  {
        filmovi film = (filmovi) tableview.getSelectionModel().getSelectedItem();
        int a=film.getId();
         fm.delete(a);
+        tableview.setItems(FXCollections.observableList(fm.getAll()));
+    }
+
+    public void load(ActionEvent actionEvent) throws filmoviException {
         tableview.setItems(FXCollections.observableList(fm.getAll()));
     }
 }

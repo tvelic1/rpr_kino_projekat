@@ -72,11 +72,12 @@
             <Label layoutX="-12.0" layoutY="156.0" prefHeight="18.0" prefWidth="82.0" text="Unesite trajanje" translateX="-150.0" />
             <Label layoutX="-84.0" layoutY="216.0" prefHeight="18.0" prefWidth="85.0" text="Unesite ocjenu" translateX="-75.0" />
             <Label layoutX="128.0" layoutY="270.0" prefHeight="18.0" prefWidth="68.0" text="Unesite ime" translateX="-275.0" />
-            <Button layoutX="48.0" layoutY="313.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="60.0" style="-fx-background-color: ;" text="Clear" translateX="-120.0" />
+            <Button layoutX="48.0" layoutY="313.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="60.0" style="-fx-background-color:red ;" text="Clear" translateX="-120.0" />
             <Button layoutX="138.0" layoutY="384.0" mnemonicParsing="false" onAction="#logoutt" style="-fx-background-color: aqua;" text="Logout" />
             <TextField fx:id="text" layoutX="10.0" layoutY="28.0" translateX="-150.0" translateY="-10.0" />
             <Button layoutX="8.0" layoutY="18.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: lemonchiffon;" text="Search" />
             <Button layoutX="19.0" layoutY="384.0" mnemonicParsing="false" onAction="#delete" text="Delete" translateX="-200.0" translateY="5.0" />
+            <Button layoutX="8.0" layoutY="359.0" mnemonicParsing="false" onAction="#load" text="Load" translateX="-189.0" />
          </children>
       </AnchorPane>
    </right>
