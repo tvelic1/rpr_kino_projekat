@@ -75,14 +75,10 @@ public class KinoController  {
 
         tableview.setItems(FXCollections.observableList(manager.getAll()));
         names= FXCollections.observableArrayList();
-       // JdbcDao jdbc= new JdbcDao();
+
         try {
             JdbcDao.getIntoListView(names);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         listView.setItems(names);
@@ -177,11 +173,24 @@ public class KinoController  {
         stage.show();
     } FilmoviManager fm=new FilmoviManager();
 
-    public void delete(ActionEvent actionEvent) throws filmoviException {
+    public void delete(ActionEvent actionEvent) throws filmoviException, IOException, ClassNotFoundException {
        filmovi film = (filmovi) tableview.getSelectionModel().getSelectedItem();
+        String vrs= listView.getSelectionModel().getSelectedItem();
+       if(film!=null && vrs==null){
        int a=film.getId();
         fm.delete(a);
-        tableview.setItems(FXCollections.observableList(fm.getAll()));
+        tableview.setItems(FXCollections.observableList(fm.getAll()));}
+       else if(vrs!=null && film==null){
+
+        JdbcDao.deleteCategory(vrs);
+           names= FXCollections.observableArrayList();
+
+           try {
+               JdbcDao.getIntoListView(names);
+           } catch (SQLException | IOException | ClassNotFoundException e) {
+               throw new RuntimeException(e);
+           }
+       listView.setItems(names);}
     }
 
     public void load(ActionEvent actionEvent) throws filmoviException {
