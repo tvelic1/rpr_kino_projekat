@@ -45,7 +45,7 @@ public class LoginController {
 
     }
 
-    public void login(ActionEvent event) throws SQLException, IOException {
+    public void login(ActionEvent event) throws SQLException, IOException, ClassNotFoundException {
 
         Window owner = submitButton.getScene().getWindow();
 

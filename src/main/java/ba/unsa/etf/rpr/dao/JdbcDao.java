@@ -19,11 +19,18 @@ public class JdbcDao {
 
 
 
-    public boolean validate(String emailId, String password) throws SQLException {
+    public boolean validate(String emailId, String password) throws SQLException, IOException, ClassNotFoundException {
 
 
+        FileReader fr=new FileReader("src/main/resources/db.properties");
+        Properties p=new Properties();
+        p.load(fr);
+        String url=p.getProperty("url");
+        String user =p.getProperty("user");
+        String pass=p.getProperty("password");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         try (Connection connection = DriverManager
-                .getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
+                .getConnection(p.getProperty("url"),p.getProperty("user"),p.getProperty("password"));
 
 
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY)) {
@@ -44,14 +51,17 @@ public class JdbcDao {
         }
         return false;
     }
-    public void insertRecord(String fullName, String emailId, String password) throws SQLException {
-
-        // Step 1: Establishing a Connection and
-        // try-with-resource statement will auto close the connection.
+    public static void insertRecord(String fullName, String emailId, String password) throws SQLException, IOException, ClassNotFoundException {
+        FileReader fr=new FileReader("src/main/resources/db.properties");
+        Properties p=new Properties();
+        p.load(fr);
+        String url=p.getProperty("url");
+        String user =p.getProperty("user");
+        String pass=p.getProperty("password");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         try (Connection connection = DriverManager
-                .getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
+                .getConnection(p.getProperty("url"),p.getProperty("user"),p.getProperty("password"));
 
-             // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUERY)) {
             preparedStatement.setString(1, fullName);
             preparedStatement.setString(2, emailId);
@@ -65,14 +75,17 @@ public class JdbcDao {
             printSQLException(e);
         }
     }
-    public void insert1Record(String fullName) throws SQLException {
-
-        // Step 1: Establishing a Connection and
-        // try-with-resource statement will auto close the connection.
+    public void insert1Record(String fullName) throws SQLException, IOException, ClassNotFoundException {
+        FileReader fr=new FileReader("src/main/resources/db.properties");
+        Properties p=new Properties();
+        p.load(fr);
+        String url=p.getProperty("url");
+        String user =p.getProperty("user");
+        String pass=p.getProperty("password");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         try (Connection connection = DriverManager
-                .getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
+                .getConnection(p.getProperty("url"),p.getProperty("user"),p.getProperty("password"));
 
-             // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT1_QUERY)) {
             preparedStatement.setString(1, fullName);
 
@@ -85,9 +98,18 @@ public class JdbcDao {
             printSQLException(e);
         }
     }
-    public static void getIntoListView(ObservableList<String> value) throws SQLException{
-       // Object PreparedStatement;
-        try(Connection connection=DriverManager.getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
+    public static void getIntoListView(ObservableList<String> value) throws SQLException, IOException, ClassNotFoundException {
+        FileReader fr=new FileReader("src/main/resources/db.properties");
+        Properties p=new Properties();
+        p.load(fr);
+        String url=p.getProperty("url");
+        String user =p.getProperty("user");
+        String pass=p.getProperty("password");
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        try (Connection connection = DriverManager
+                .getConnection(p.getProperty("url"),p.getProperty("user"),p.getProperty("password"));
+
+
             PreparedStatement ps= connection.prepareStatement("SELECT * FROM vrstafilma")){
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
@@ -99,10 +121,20 @@ public class JdbcDao {
             printSQLException(e);
         }
     }
-    public static void insertIntoCategory(String name){
-        try(Connection con=DriverManager.getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
+    public static void insertIntoCategory(String name) throws IOException, ClassNotFoundException {
+        FileReader fr=new FileReader("src/main/resources/db.properties");
+        Properties p=new Properties();
+        p.load(fr);
+        String url=p.getProperty("url");
+        String user =p.getProperty("user");
+        String pass=p.getProperty("password");
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        try (Connection connection = DriverManager
+                .getConnection(p.getProperty("url"),p.getProperty("user"),p.getProperty("password"));
 
-            PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO vrstafilma (zanr) VALUES (?)")) {
+
+
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO vrstafilma (zanr) VALUES (?)")) {
             preparedStatement.setString(1, name);
 
 
@@ -133,22 +165,38 @@ public class JdbcDao {
         }
     }
     public static ObservableList<Integer> ab(ObservableList<Integer> a){
-        try{
+    try{    FileReader fr=new FileReader("src/main/resources/db.properties");
+        Properties p=new Properties();
+        p.load(fr);
+        String url=p.getProperty("url");
+        String user =p.getProperty("user");
+        String pass=p.getProperty("password");
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection = DriverManager
+                .getConnection(p.getProperty("url"),p.getProperty("user"),p.getProperty("password"));
 
-            Connection con=DriverManager.getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
-            PreparedStatement ps=con.prepareStatement("SELECT idfilma FROM filmovi");
+             PreparedStatement ps=connection.prepareStatement("SELECT idfilma FROM filmovi");
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 a.add(rs.getInt(1));
 
             } return a;
-        } catch (SQLException e) {
+        } catch (SQLException | IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
-    public static int getCatId(String name) throws SQLException {
-        Connection con=DriverManager.getConnection(Admin.getURL(),Admin.getUser(),Admin.getPassword());
-        PreparedStatement ps=con.prepareStatement("SELECT idvrstafilma FROM vrstafilma WHERE zanr = ?");
+    public static int getCatId(String name) throws SQLException, ClassNotFoundException, IOException {
+        FileReader fr=new FileReader("src/main/resources/db.properties");
+        Properties p=new Properties();
+        p.load(fr);
+        String url=p.getProperty("url");
+        String user =p.getProperty("user");
+        String pass=p.getProperty("password");
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection = DriverManager
+                .getConnection(p.getProperty("url"),p.getProperty("user"),p.getProperty("password"));
+
+             PreparedStatement ps=connection.prepareStatement("SELECT idvrstafilma FROM vrstafilma WHERE zanr = ?");
         ps.setString(1,name);
         ResultSet rs=ps.executeQuery();
         if(rs.next()){

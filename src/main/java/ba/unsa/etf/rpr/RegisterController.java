@@ -172,7 +172,7 @@ public class RegisterController extends Application {
         }
 
 
-        public void register2(ActionEvent actionEvent) throws SQLException, IOException {
+        public void register2(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException {
             Window owner = submitButton.getScene().getWindow();
 
             System.out.println(fullNameField.getText());
@@ -194,8 +194,8 @@ public class RegisterController extends Application {
                         "Please enter a password");
                 return;
             }
-            JdbcDao jdbcDao = new JdbcDao();
-            jdbcDao.insertRecord(fullNameField.getText(), emailIdField.getText(), passwordField.getText());
+            //JdbcDao jdbcDao = new JdbcDao();
+            JdbcDao.insertRecord(fullNameField.getText(), emailIdField.getText(), passwordField.getText());
             String fullName = fullNameField.getText();
             String emailId = emailIdField.getText();
             String password = passwordField.getText();

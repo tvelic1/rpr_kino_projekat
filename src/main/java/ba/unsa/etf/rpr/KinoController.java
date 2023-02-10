@@ -75,21 +75,25 @@ public class KinoController  {
         //ajdi.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleIntegerProperty(filmovi.getId_vrsta_filma1()).asObject();});
         tableview.setItems(FXCollections.observableList(manager.getAll()));
         names= FXCollections.observableArrayList();
-        JdbcDao jdbc= new JdbcDao();
+       // JdbcDao jdbc= new JdbcDao();
         try {
-            jdbc.getIntoListView(names);
+            JdbcDao.getIntoListView(names);
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         listView.setItems(names);
         AtomicInteger a = new AtomicInteger();
         listView.getSelectionModel().selectedItemProperty().addListener((obs,o,n)->{
             if(n!=null){
-                JdbcDao jdbcDao=new JdbcDao();
+             //   JdbcDao jdbcDao=new JdbcDao();
                 try {
-                    a.set(jdbcDao.getCatId(n));
+                    a.set(JdbcDao.getCatId(n));
                     //System.out.println("id je "+a);
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException | IOException e) {
                     throw new RuntimeException(e);
                 }
 
@@ -109,11 +113,11 @@ public class KinoController  {
 
 
 
-    public void addcat(ActionEvent actionEvent) {
+    public void addcat(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
         if(!names.contains(tekst.getText()) && !tekst.getText().isEmpty())
         {names.add(tekst.getText());
-        JdbcDao j=new JdbcDao();
-        j.insertIntoCategory(tekst.getText());}
+        //JdbcDao j=new JdbcDao();
+        JdbcDao.insertIntoCategory(tekst.getText());}
         tekst.setText("");
     }
 
