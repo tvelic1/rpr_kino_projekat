@@ -11,13 +11,12 @@ public class JdbcDao {
 
 
 
-    private static final String INSERT_QUERY = "INSERT INTO GLEDATELJI (IMEPREZIME, email, password) VALUES (?, ?, ?)";
-    private static final String INSERT1_QUERY = "INSERT INTO vrstafilma (zanr) VALUES (?)";
-    private static final String SELECT_QUERY = "SELECT * FROM GLEDATELJI WHERE email = ? and password = ?";
 
 
 
-    public boolean validate(String emailId, String password) throws SQLException, IOException, ClassNotFoundException {
+
+
+    public static boolean validate(String emailId, String password) throws SQLException, IOException, ClassNotFoundException {
 
 
         FileReader fr=new FileReader("src/main/resources/db.properties");
@@ -30,7 +29,7 @@ public class JdbcDao {
         try (Connection connection = DriverManager
                 .getConnection(p.getProperty("url"),p.getProperty("user"),p.getProperty("password"));
 
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY)) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM GLEDATELJI WHERE email = ? and password = ?")) {
             preparedStatement.setString(1, emailId);
             preparedStatement.setString(2, password);
 
@@ -58,7 +57,7 @@ public class JdbcDao {
         try (Connection connection = DriverManager
                 .getConnection(p.getProperty("url"),p.getProperty("user"),p.getProperty("password"));
 
-             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUERY)) {
+             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO GLEDATELJI (IMEPREZIME, email, password) VALUES (?, ?, ?)")) {
             preparedStatement.setString(1, fullName);
             preparedStatement.setString(2, emailId);
             preparedStatement.setString(3, password);
@@ -71,29 +70,7 @@ public class JdbcDao {
             printSQLException(e);
         }
     }
-    public void insert1Record(String fullName) throws SQLException, IOException, ClassNotFoundException {
-        FileReader fr=new FileReader("src/main/resources/db.properties");
-        Properties p=new Properties();
-        p.load(fr);
-        String url=p.getProperty("url");
-        String user =p.getProperty("user");
-        String pass=p.getProperty("password");
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        try (Connection connection = DriverManager
-                .getConnection(p.getProperty("url"),p.getProperty("user"),p.getProperty("password"));
 
-             PreparedStatement preparedStatement = connection.prepareStatement(INSERT1_QUERY)) {
-            preparedStatement.setString(1, fullName);
-
-
-            System.out.println(preparedStatement);
-            // Step 3: Execute the query or update query
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            // print SQL exception information
-            printSQLException(e);
-        }
-    }
     public static void getIntoListView(ObservableList<String> value) throws SQLException, IOException, ClassNotFoundException {
         FileReader fr=new FileReader("src/main/resources/db.properties");
         Properties p=new Properties();
@@ -106,7 +83,7 @@ public class JdbcDao {
                 .getConnection(p.getProperty("url"),p.getProperty("user"),p.getProperty("password"));
 
 
-            PreparedStatement ps= connection.prepareStatement("SELECT * FROM vrstafilma")){
+            PreparedStatement ps= connection.prepareStatement("SELECT * FROM vrstafilma order by idvrstafilma desc ")){
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 String zaanr=rs.getString("zanr");
@@ -127,14 +104,9 @@ public class JdbcDao {
         Class.forName("com.mysql.cj.jdbc.Driver");
         try (Connection connection = DriverManager
                 .getConnection(p.getProperty("url"),p.getProperty("user"),p.getProperty("password"));
-
-
-
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO vrstafilma (zanr) VALUES (?)")) {
             preparedStatement.setString(1, name);
-
-
-            System.out.println(preparedStatement);
+         System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

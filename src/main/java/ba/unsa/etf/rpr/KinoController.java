@@ -116,7 +116,6 @@ public class KinoController  {
     public void addcat(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
         if(!names.contains(tekst.getText()) && !tekst.getText().isEmpty())
         {names.add(tekst.getText());
-        //JdbcDao j=new JdbcDao();
         JdbcDao.insertIntoCategory(tekst.getText());}
         tekst.setText("");
     }
