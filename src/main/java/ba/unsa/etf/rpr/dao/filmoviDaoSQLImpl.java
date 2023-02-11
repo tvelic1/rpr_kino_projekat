@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.domain.filmovi;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 
 import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,5 +78,6 @@ public class filmoviDaoSQLImpl extends AbstractDao<filmovi> implements filmoviDa
     }
 
 
-    }
+
+}
 

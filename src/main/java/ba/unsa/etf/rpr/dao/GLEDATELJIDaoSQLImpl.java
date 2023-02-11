@@ -2,6 +2,8 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.GLEDATELJI;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
+
+import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
@@ -53,4 +55,6 @@ public class GLEDATELJIDaoSQLImpl extends AbstractDao<GLEDATELJI> implements  GL
             throw new filmoviException(e.getMessage(),e);
         }
     }
+
+
 }

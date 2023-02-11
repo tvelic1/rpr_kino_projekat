@@ -11,7 +11,7 @@ public class FilmoviManager  {
     public List<filmovi>getAll() throws filmoviException{
         return DaoFactory.filmDao().getAll();
     }
-    public List<filmovi>getFiltered(int a) throws filmoviException{
+    public List<filmovi>getFiltered(String a) throws filmoviException{
         return DaoFactory.filmDao().getFiltered(a);
     }
     public List<filmovi>search(String text)throws filmoviException{

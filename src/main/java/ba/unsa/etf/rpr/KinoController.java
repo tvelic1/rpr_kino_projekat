@@ -20,7 +20,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -48,7 +47,7 @@ public class KinoController  {
 
     private ObservableList<String> names;
     public Button closeButton;
-    public ListView<String> listView;
+    public ListView<vrstafilma> listView;
     public FilmoviManager manager=new FilmoviManager();
 
 
@@ -74,27 +73,17 @@ public class KinoController  {
         ime.setCellValueFactory(cellData->{filmovi filmovi=cellData.getValue(); return new SimpleStringProperty(filmovi.getIme());});
 
         tableview.setItems(FXCollections.observableList(manager.getAll()));
-        names= FXCollections.observableArrayList();
 
-        try {
-            JdbcDao.getIntoListView(names);
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        listView.setItems(names);
-        AtomicInteger a = new AtomicInteger();
+        listView.setItems(FXCollections.observableList(man.getAll()));
+        //AtomicInteger a = new AtomicInteger();
+        //AtomicInteger a = new AtomicInteger();
         listView.getSelectionModel().selectedItemProperty().addListener((obs,o,n)->{
             if(n!=null){
-             //   JdbcDao jdbcDao=new JdbcDao();
-                try {
-                    a.set(JdbcDao.getCatId(n));
-                    //System.out.println("id je "+a);
-                } catch (SQLException | ClassNotFoundException | IOException e) {
-                    throw new RuntimeException(e);
-                }
+
+
 
                 try {
-                    tableview.setItems(FXCollections.observableList(manager.getFiltered(a.get())));
+                    tableview.setItems(FXCollections.observableList(manager.getFiltered(n.getZanr())));
                 } catch (filmoviException e) {
                     throw new RuntimeException(e);
                 }
@@ -109,11 +98,16 @@ public class KinoController  {
 
 
 
-    public void addcat(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
-        if(!names.contains(tekst.getText()) && !tekst.getText().isEmpty())
-        {names.add(tekst.getText());
-        JdbcDao.insertIntoCategory(tekst.getText());}
-        tekst.setText("");
+    public void addcat(ActionEvent actionEvent) throws IOException, ClassNotFoundException, filmoviException {
+     vrstafilma v=new vrstafilma();
+     List<vrstafilma> vr=new ArrayList<>(man.getAll());
+     for(vrstafilma f: vr){
+         if(f.getZanr().equals(tekst.getText())) throw new filmoviException("Vec postoji");
+     }
+     v.setZanr(tekst.getText());
+     man.add(v);
+     listView.setItems(FXCollections.observableList(man.getAll()));
+     tekst.setText("");
     }
 
     public void search(ActionEvent actionEvent) throws filmoviException {
@@ -175,12 +169,12 @@ public class KinoController  {
 
     public void delete(ActionEvent actionEvent) throws filmoviException, IOException, ClassNotFoundException {
        filmovi film = (filmovi) tableview.getSelectionModel().getSelectedItem();
-        String vrs= listView.getSelectionModel().getSelectedItem();
-       if(film!=null && vrs==null){
+        //String vrs= listView.getSelectionModel().getSelectedItem();
+       if(film!=null ){
        int a=film.getId();
         fm.delete(a);
         tableview.setItems(FXCollections.observableList(fm.getAll()));}
-       else if(vrs!=null && film==null){
+  /*     else if(vrs!=null && film==null){
 
         JdbcDao.deleteCategory(vrs);
            names= FXCollections.observableArrayList();
@@ -190,7 +184,7 @@ public class KinoController  {
            } catch (SQLException | IOException | ClassNotFoundException e) {
                throw new RuntimeException(e);
            }
-       listView.setItems(names);}
+       listView.setItems(names);}*/
     }
 
     public void load(ActionEvent actionEvent) throws filmoviException {

@@ -38,9 +38,6 @@ public class vrstafilma implements Idable{
 
     @Override
     public String toString() {
-        return "vrstafilma{" +
-                "id=" + id +
-                ", zanr='" + zanr + '\'' +
-                '}';
+        return zanr;
     }
 }

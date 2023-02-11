@@ -3,6 +3,7 @@ import ba.unsa.etf.rpr.domain.vrstafilma;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 
 import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import java.util.TreeMap;
 import java.util.Map;
@@ -30,6 +31,7 @@ public class vrstafilmaDaoSQLImpl extends AbstractDao<vrstafilma> implements vrs
         m.put("zanr",v.getZanr());
         return m;
     }
+
 
 
 }

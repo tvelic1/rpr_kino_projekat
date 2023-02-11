@@ -3,6 +3,7 @@ import ba.unsa.etf.rpr.domain.Idable;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 
 import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
@@ -56,11 +57,11 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
             throw new filmoviException(e.getMessage(),e);
         }
     }
-    public List<T> getFiltered(int a) throws filmoviException{
-        String query="SELECT * FROM filmovi WHERE id_vrsta_filma=?";
+    public List<T> getFiltered(String a) throws filmoviException{
+        String query="SELECT f.idfilma,f.ocjena,f.TRAJANJE,f.IME,f.id_vrsta_filma FROM filmovi f,vrstafilma vf WHERE id_vrsta_filma=idvrstafilma AND zanr=?";
         List<T> results=new ArrayList<>();
         try{PreparedStatement st=this.con.prepareStatement(query);
-        st.setInt(1,a);
+        st.setString(1,a);
         ResultSet rs=st.executeQuery();
             while (rs.next()) {
                 T object=row2object(rs);
@@ -72,6 +73,7 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
         }
 
     }
+
     public List<T> getAll() throws filmoviException{
         String q="SELECT * FROM "+tableName;
         List<T> results=new ArrayList<T>();

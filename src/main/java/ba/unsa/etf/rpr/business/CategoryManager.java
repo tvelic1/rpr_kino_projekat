@@ -3,6 +3,8 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 import ba.unsa.etf.rpr.domain.vrstafilma;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class CategoryManager {
@@ -46,5 +48,6 @@ public vrstafilma add(vrstafilma v) throws filmoviException{
         return DaoFactory.vrstaaDao().getAll();
 
         }
+
 
 }
