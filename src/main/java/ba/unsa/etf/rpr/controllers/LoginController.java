@@ -1,6 +1,6 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.controllers;
 
-import ba.unsa.etf.rpr.dao.JdbcDao;
+import ba.unsa.etf.rpr.business.GledateljiManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,9 +17,6 @@ import javafx.stage.Window;
 
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class LoginController {
@@ -66,10 +63,9 @@ public class LoginController {
         String emailId = emailIdField.getText();
         String password = passwordField.getText();
 
-        JdbcDao jdbcDao = new JdbcDao();
-        boolean flag = jdbcDao.validate(emailId, password);
+        GledateljiManager g=new GledateljiManager();
 
-        if (!flag) {
+        if (!g.validate(emailId,password)) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Invalid data");
             return;

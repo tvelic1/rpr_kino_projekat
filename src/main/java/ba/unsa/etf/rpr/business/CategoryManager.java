@@ -29,9 +29,9 @@ public vrstafilma add(vrstafilma v) throws filmoviException{
 
         }
 
-        public void delete(int catId) throws filmoviException{
+        public void delete1(String name) throws filmoviException{
         try{
-            DaoFactory.vrstaaDao().delete(catId);
+            DaoFactory.vrstaaDao().delete1(name);
         }catch(filmoviException e){
             if(e.getMessage().contains("FOREIGN KEY"))
                 throw new filmoviException("Ne možete obrisati kategoriju koje je povezana sa filmovima, prvo morate obrisati filmove");

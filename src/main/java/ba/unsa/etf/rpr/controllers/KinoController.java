@@ -1,8 +1,7 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.CategoryManager;
 import ba.unsa.etf.rpr.business.FilmoviManager;
-import ba.unsa.etf.rpr.dao.JdbcDao;
 import ba.unsa.etf.rpr.domain.filmovi;
 import ba.unsa.etf.rpr.domain.vrstafilma;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
@@ -26,7 +25,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class KinoController  {
     public TextField tekst;
@@ -169,23 +167,18 @@ public class KinoController  {
 
     public void delete(ActionEvent actionEvent) throws filmoviException, IOException, ClassNotFoundException {
        filmovi film = (filmovi) tableview.getSelectionModel().getSelectedItem();
-        //String vrs= listView.getSelectionModel().getSelectedItem();
-       if(film!=null ){
-       int a=film.getId();
-        fm.delete(a);
+       vrstafilma vm=listView.getSelectionModel().getSelectedItem();
+       if(film!=null && vm==null){
+       fm.delete(film.getId());
         tableview.setItems(FXCollections.observableList(fm.getAll()));}
-  /*     else if(vrs!=null && film==null){
+    else if(vm!=null && film==null){
+        man.delete1(vm.getZanr());
+        listView.setItems(FXCollections.observableList(man.getAll()));
 
-        JdbcDao.deleteCategory(vrs);
-           names= FXCollections.observableArrayList();
+        }
 
-           try {
-               JdbcDao.getIntoListView(names);
-           } catch (SQLException | IOException | ClassNotFoundException e) {
-               throw new RuntimeException(e);
-           }
-       listView.setItems(names);}*/
-    }
+      }
+
 
     public void load(ActionEvent actionEvent) throws filmoviException {
         tableview.setItems(FXCollections.observableList(fm.getAll()));

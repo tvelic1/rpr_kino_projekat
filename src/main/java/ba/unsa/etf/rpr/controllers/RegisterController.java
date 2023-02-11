@@ -1,5 +1,5 @@
-package ba.unsa.etf.rpr;
-import ba.unsa.etf.rpr.dao.JdbcDao;
+package ba.unsa.etf.rpr.controllers;
+import ba.unsa.etf.rpr.business.GledateljiManager;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -195,10 +195,13 @@ public class RegisterController extends Application {
                 return;
             }
             //JdbcDao jdbcDao = new JdbcDao();
-            JdbcDao.insertRecord(fullNameField.getText(), emailIdField.getText(), passwordField.getText());
+           // JdbcDao.insertRecord(fullNameField.getText(), emailIdField.getText(), passwordField.getText());
+
             String fullName = fullNameField.getText();
             String emailId = emailIdField.getText();
             String password = passwordField.getText();
+            GledateljiManager g=new GledateljiManager();
+            g.insertRecord(fullName,emailId,password);
 
 
 
