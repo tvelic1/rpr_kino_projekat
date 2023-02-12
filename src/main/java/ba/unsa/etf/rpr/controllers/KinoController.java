@@ -147,7 +147,7 @@ public class KinoController  {
                     }
 
                 }
-                if(!e) v=man.add(v);
+                if(!e) {v=man.add(v);CategoryManager fmm=new CategoryManager() ;listView.setItems(FXCollections.observableList(fmm.getAll()));}
            if(!zaanr.getText().isEmpty() && !ocjenaa.getText().isEmpty() && !trajanjee.getText().isEmpty() && !imeee.getText().isEmpty())
            {  f.setId_vrsta_filma(v);
                 f.setOcjena(ocjenaa.getText());
@@ -180,10 +180,10 @@ public class KinoController  {
     public void delete(ActionEvent actionEvent) throws filmoviException, IOException, ClassNotFoundException {
        filmovi film = (filmovi) tableview.getSelectionModel().getSelectedItem();
        vrstafilma vm=listView.getSelectionModel().getSelectedItem();
-       if(film!=null && vm==null){
+       if(film!=null ){
        fm.delete(film.getId());
         tableview.setItems(FXCollections.observableList(fm.getAll()));}
-    else if(vm!=null && film==null){
+    else if(vm!=null ){
         man.delete1(vm.getZanr());
         listView.setItems(FXCollections.observableList(man.getAll()));
 
