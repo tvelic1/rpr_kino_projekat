@@ -9,9 +9,15 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,6 +84,17 @@ public class EditController {
        /* if(f.getIme() !=null)
         editbox.setItems(FXCollections.observableList(fm.getAll()));*/
 
+    }
+
+    public void back(ActionEvent event) throws IOException {
+        Parent root;
+        Stage stage;
+        Scene scene;
+        root = FXMLLoader.load(getClass().getResource("/kino.fxml"));
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public class EditModel{

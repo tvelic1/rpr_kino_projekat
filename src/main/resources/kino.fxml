@@ -78,6 +78,7 @@
             <Button layoutX="8.0" layoutY="18.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: lemonchiffon;" text="Search" />
             <Button layoutX="19.0" layoutY="384.0" mnemonicParsing="false" onAction="#delete" text="Delete" translateX="-200.0" translateY="5.0" />
             <Button layoutX="8.0" layoutY="359.0" mnemonicParsing="false" onAction="#load" prefHeight="26.0" prefWidth="51.0" text="Load" translateX="-189.0" />
+            <Button layoutY="389.0" mnemonicParsing="false" onAction="#goedit" text="Edit" />
          </children>
       </AnchorPane>
    </right>

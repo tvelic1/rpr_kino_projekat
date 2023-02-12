@@ -86,6 +86,18 @@ public class KinoController  {
                     throw new RuntimeException(e);
                 }
             }
+        }
+        );
+        text.textProperty().addListener((obs,o,n)->{
+            if(n!=null){
+                ObservableList<filmovi>items= null;
+                try {
+                    items = FXCollections.observableList(manager.search(n));
+                } catch (filmoviException e) {
+                    throw new RuntimeException(e);
+                }
+                tableview.setItems(items);
+            }
         });
     }
     
@@ -182,5 +194,16 @@ public class KinoController  {
 
     public void load(ActionEvent actionEvent) throws filmoviException {
         tableview.setItems(FXCollections.observableList(fm.getAll()));
+    }
+
+    public void goedit(ActionEvent event) throws IOException {
+        Parent root;
+        Stage stage;
+        Scene scene;
+        root = FXMLLoader.load(getClass().getResource("/edit.fxml"));
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
