@@ -22,18 +22,24 @@ public class EditController {
     public TextField drugi;
     public TextField treci;
     public TextField cetvrti;
+
+    int a;
     FilmoviManager fm=new FilmoviManager();
     EditModel model=new EditModel();
 
     public void initialize() throws filmoviException{
         editbox.setItems(FXCollections.observableList(fm.getAll()));
         editbox.getSelectionModel().selectedItemProperty().addListener((obs,o,n)->{
-            if(o!=null){
+            if(o!=null){ filmovi x=(filmovi) o;
+                a=x.getId();
 
                 prvi.textProperty().unbindBidirectional(model.ime);
                 drugi.textProperty().unbindBidirectional((model.ocjena));
                 treci.textProperty().unbindBidirectional(model.trajanje);
+                cetvrti.textProperty().unbindBidirectional(model.zanr);
             }
+            filmovi x=(filmovi) n;
+            a=x.getId();
             try {
                 model.fromFilmovi((filmovi) n);
             } catch (filmoviException e) {
@@ -43,6 +49,7 @@ public class EditController {
             drugi.textProperty().bindBidirectional(model.ocjena);
             treci.textProperty().bindBidirectional(model.trajanje);
             cetvrti.textProperty().bindBidirectional(model.zanr);
+            cetvrti.setEditable(false);
            try {
                 editbox.setItems(FXCollections.observableList(fm.getAll()));
             } catch (filmoviException e) {
@@ -58,7 +65,8 @@ public class EditController {
     public void upd(ActionEvent actionEvent) throws filmoviException {
 
      filmovi  f=new filmovi();
-     f.setId(fm.getIdfilma(model.ime.get()));
+        System.out.println(a);
+     f.setId(a);
         System.out.println(fm.getIdfilma(model.ime.get()));
      f.setIme(model.ime.get());
         System.out.println(fm.getIdfilma(model.ime.get()));
