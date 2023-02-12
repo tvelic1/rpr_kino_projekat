@@ -1,4 +1,5 @@
 package ba.unsa.etf.rpr.dao;
+import ba.unsa.etf.rpr.domain.filmovi;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 
 import java.io.IOException;
@@ -13,5 +14,5 @@ public interface Dao<tip> {
     void delete1(String id) throws filmoviException;
     tip getById(int id) throws filmoviException;
     tip add(tip item) throws filmoviException;
-    tip update(tip item) throws filmoviException;
+    filmovi update(filmovi item) throws filmoviException;
 }

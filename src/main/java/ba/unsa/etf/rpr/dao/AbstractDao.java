@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Idable;
+import ba.unsa.etf.rpr.domain.filmovi;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 
 import java.io.FileReader;
@@ -148,6 +149,7 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
         s.append("INSERT INTO ").append(tableName);
         s.append(" (").append(c.getKey()).append(") ");
         s.append("VALUES (").append(c.getValue()).append(") ");
+
         try{
             PreparedStatement st= getCon().prepareStatement(s.toString(),Statement.RETURN_GENERATED_KEYS);
             int br=1;
@@ -165,22 +167,18 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
             throw new filmoviException(e.getMessage(),e);
         }
     }
-    public T update(T item ) throws filmoviException{
-        Map<String,Object>row=object2row(item);
-        String c=prepareUpdateParts(row);
-        StringBuilder s=new StringBuilder();
-        s.append("UPDATE ").append(tableName).append(" SET ").append(c).append(" WHERE id=?");
+    public filmovi update(filmovi item ) throws filmoviException{
+
         try{
-            PreparedStatement st= getCon().prepareStatement(s.toString(),Statement.RETURN_GENERATED_KEYS);
-            int br=1;
-            for(Map.Entry<String,Object> entry: row.entrySet()){
-                if(entry.getKey().equals("id") || entry.getKey().equals("idfilma") || entry.getKey().equals("jmbg")) continue;
-                st.setObject(br,entry.getValue());
-                br++;
-            }
-            st.setObject(br+1,item.getId());
+            PreparedStatement st= getCon().prepareStatement("UPDATE filmovi SET ime=?, ocjena=?,trajanje=? WHERE idfilma=?");
+            st.setString(1, item.getIme());
+            st.setString(2, item.getOcjena());
+            st.setInt(3,item.getTrajanje());
+            st.setInt(4,item.getId());
             st.executeUpdate();
             return item;
+
+
         } catch (SQLException e) {
             throw new filmoviException(e.getMessage(),e);
         }

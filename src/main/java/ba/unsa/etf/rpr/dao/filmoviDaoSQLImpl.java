@@ -76,6 +76,32 @@ public class filmoviDaoSQLImpl extends AbstractDao<filmovi> implements filmoviDa
         return executeQueryUnique("SELECT * FROM filmovi ORDER BY RAND() LIMIT 1", null);
 
     }
+    public String getZaanr(int a) throws filmoviException{
+        try{
+            PreparedStatement st=getCon().prepareStatement("SELECT zanr FROM vrstafilma WHERE idvrstafilma=?");
+            st.setInt(1,a);
+            ResultSet rs=st.executeQuery();
+            if(rs.next()){
+                return rs.getString(1);
+            } return "nema";
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public int getIdfilma(String a) throws filmoviException{
+        try{
+            PreparedStatement st=getCon().prepareStatement("SELECT idfilma FROM filmovi WHERE IME=?  ");
+            st.setString(1,a);
+            ResultSet rs=st.executeQuery();
+            if(rs.next()){
+                return rs.getInt(1);
+            } return -1;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
 
 

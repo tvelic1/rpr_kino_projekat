@@ -39,11 +39,7 @@ public vrstafilma add(vrstafilma v) throws filmoviException{
         }
 
         }
-        public vrstafilma update (vrstafilma v) throws filmoviException{
-        validateCategoryName(v.getZanr());
-        return DaoFactory.vrstaaDao().update(v);
 
-        }
         public List<vrstafilma>getAll() throws filmoviException {
         return DaoFactory.vrstaaDao().getAll();
 

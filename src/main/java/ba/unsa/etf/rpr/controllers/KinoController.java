@@ -34,7 +34,7 @@ public class KinoController  {
     public TableColumn<filmovi,Integer> trajanje;
     public TableColumn<filmovi,String> ocjena;
     public TableColumn<filmovi,String>ime;
-    //public TableColumn<filmovi,Integer> ajdi;
+
     public TextField text;
     public Button addbutton;
 

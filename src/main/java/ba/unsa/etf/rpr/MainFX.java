@@ -12,7 +12,7 @@ public class MainFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         System.out.println(getClass());
-        Parent root = FXMLLoader.load(getClass().getResource("/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/edit.fxml"));
         stage.setTitle("Cinema App");
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.show();

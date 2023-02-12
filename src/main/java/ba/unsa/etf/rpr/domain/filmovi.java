@@ -67,12 +67,6 @@ public class filmovi implements Idable {
 
     @Override
     public String toString() {
-        return "filmovi{" +
-                "idfilma=" + idfilma +
-                ", ocjena='" + ocjena + '\'' +
-                ", trajanje=" + trajanje +
-                ", ime='" + ime + '\'' +
-                ", id_vrsta_filma=" + id_vrsta_filma +
-                '}';
+        return ime;
     }
 }

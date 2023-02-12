@@ -25,14 +25,20 @@ public class FilmoviManager  {
         return DaoFactory.filmDao().getById(id);
 
     }
-    public void update(filmovi f) throws filmoviException{
-        DaoFactory.filmDao().update(f);
+    public filmovi update(filmovi f) throws filmoviException{
+        return DaoFactory.filmDao().update(f);
 
     }
     public filmovi add(filmovi f) throws filmoviException{
         return DaoFactory.filmDao().add(f);
     }
 
+    public String getZaanr(int a) throws filmoviException {
+        return DaoFactory.filmDao().getZaanr(a);
+    }
+    public int getIdfilma (String ime) throws filmoviException{
+        return DaoFactory.filmDao().getIdfilma(ime);
+    }
 
 
 }
