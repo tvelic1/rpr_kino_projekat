@@ -13,6 +13,11 @@ public class vrstafilmaDaoSQLImpl extends AbstractDao<vrstafilma> implements vrs
     public vrstafilmaDaoSQLImpl(){
         super("vrstafilma","id");
     }
+    private static vrstafilmaDaoSQLImpl instance=null;
+    public static vrstafilmaDaoSQLImpl getInstance(){
+        if(instance==null) instance=new vrstafilmaDaoSQLImpl();
+        return instance;
+    }
     @Override
     public vrstafilma row2object(ResultSet rs) throws filmoviException{
         try{

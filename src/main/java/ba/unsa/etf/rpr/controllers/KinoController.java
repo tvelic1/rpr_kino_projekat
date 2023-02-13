@@ -120,10 +120,10 @@ public class KinoController  {
      tekst.setText("");
     }
 
-    public void search(ActionEvent actionEvent) throws filmoviException {
+  /*  public void search(ActionEvent actionEvent) throws filmoviException {
         ObservableList<filmovi>items=FXCollections.observableList(manager.search(text.getText()));
         tableview.setItems(items);
-    }
+    }*/
     private Stage stage;
     private Scene scene;
     private Parent root;

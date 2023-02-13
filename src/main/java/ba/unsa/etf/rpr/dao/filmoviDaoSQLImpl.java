@@ -17,6 +17,11 @@ public class filmoviDaoSQLImpl extends AbstractDao<filmovi> implements filmoviDa
     public filmoviDaoSQLImpl(){
         super("filmovi","idfilma");
     }
+    private static filmoviDaoSQLImpl instance=null;
+    public static filmoviDaoSQLImpl getInstance(){
+        if(instance==null) instance=new filmoviDaoSQLImpl();
+        return instance;
+    }
     @Override
     public filmovi row2object(ResultSet rs) throws filmoviException{
         try{

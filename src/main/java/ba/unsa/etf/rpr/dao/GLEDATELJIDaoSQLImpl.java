@@ -15,6 +15,11 @@ public class GLEDATELJIDaoSQLImpl extends AbstractDao<GLEDATELJI> implements  GL
     public GLEDATELJIDaoSQLImpl(){
         super("GLEDATELJI","id");
     }
+    private static GLEDATELJIDaoSQLImpl instance=null;
+    public static GLEDATELJIDaoSQLImpl getInstance(){
+        if(instance==null) instance=new GLEDATELJIDaoSQLImpl();
+        return instance;
+    }
     @Override
     public GLEDATELJI row2object(ResultSet rs) throws filmoviException{
         try {
