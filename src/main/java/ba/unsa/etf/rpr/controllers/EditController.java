@@ -68,7 +68,7 @@ public class EditController {
     CategoryManager man=new CategoryManager();
 
 
-    public void upd(ActionEvent actionEvent) throws filmoviException {
+    public void upd(ActionEvent event) throws filmoviException, IOException {
 
      filmovi  f=new filmovi();
         System.out.println(a);
@@ -81,8 +81,14 @@ public class EditController {
      f.setOcjena(model.ocjena.get());
         System.out.println(model.ocjena.get());
         fm.update(f);
-       /* if(f.getIme() !=null)
-        editbox.setItems(FXCollections.observableList(fm.getAll()));*/
+        Parent root;
+        Stage stage;
+        Scene scene;
+        root = FXMLLoader.load(getClass().getResource("/kino.fxml"));
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
     }
 

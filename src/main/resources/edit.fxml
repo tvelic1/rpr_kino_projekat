@@ -11,6 +11,6 @@
       <TextField fx:id="treci" layoutX="212.0" layoutY="120.0" />
       <TextField fx:id="cetvrti" layoutX="213.0" layoutY="168.0" />
       <Button layoutX="260.0" layoutY="202.0" mnemonicParsing="false" onAction="#upd" text="Update" />
-      <Button layoutX="14.0" layoutY="202.0" mnemonicParsing="false" onAction="#back" text="Back" />
+
    </children>
 </AnchorPane>

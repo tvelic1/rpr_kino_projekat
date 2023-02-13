@@ -16,14 +16,11 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
     public AbstractDao(String tableName,String idName){
         try{ this.tableName=tableName;
             this.idName=idName;
-           // FileReader fr=new FileReader("src/main/resources/db.properties");
             Properties p=new Properties();
             p.load(ClassLoader.getSystemResource("db.properties").openStream());
             String url=p.getProperty("url");
             String user =p.getProperty("user");
             String pass=p.getProperty("password");
-          //  Class.forName("com.mysql.cj.jdbc.Driver");
-
             this.con=DriverManager.getConnection(url,user,pass);
         }catch (Exception e) {
             e.printStackTrace();
