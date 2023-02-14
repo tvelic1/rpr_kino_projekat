@@ -170,11 +170,7 @@ public class KinoController  {
     }
 
     public void logoutt(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/login.fxml"));
-        stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+       System.exit(0);
     } FilmoviManager fm=new FilmoviManager();
 
     public void delete(ActionEvent actionEvent) throws filmoviException, IOException, ClassNotFoundException {

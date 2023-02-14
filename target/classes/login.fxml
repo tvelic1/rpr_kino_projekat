@@ -40,23 +40,6 @@
             <Insets bottom="20" left="0" right="0" top="20" />
         </GridPane.margin>
     </Button>
-   <Button mnemonicParsing="false" onAction="#register1" text="register here" textFill="#a13232" translateY="25.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-      <font>
-         <Font size="10.0" />
-      </font></Button>
-   <Label alignment="TOP_LEFT" contentDisplay="TOP" text="not registred?" textAlignment="CENTER" translateX="5.0" translateY="25.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
-      <GridPane.margin>
-         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-      </GridPane.margin>
-      <padding>
-         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-      </padding>
-      <font>
-         <Font size="9.0" />
-      </font>
-      <opaqueInsets>
-         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-      </opaqueInsets></Label>
    <rowConstraints>
       <RowConstraints />
       <RowConstraints />

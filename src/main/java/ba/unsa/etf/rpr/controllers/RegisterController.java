@@ -194,8 +194,6 @@ public class RegisterController extends Application {
                         "Please enter a password");
                 return;
             }
-            //JdbcDao jdbcDao = new JdbcDao();
-           // JdbcDao.insertRecord(fullNameField.getText(), emailIdField.getText(), passwordField.getText());
 
             String fullName = fullNameField.getText();
             String emailId = emailIdField.getText();
@@ -215,4 +213,12 @@ public class RegisterController extends Application {
 
 
         }
+
+    public void login(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/login.fxml"));
+        stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
+}
