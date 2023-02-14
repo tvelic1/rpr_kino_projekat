@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class vrstafilmaDaoSQLImpl extends AbstractDao<vrstafilma> implements vrstafilmaDao {
     public vrstafilmaDaoSQLImpl(){
-        super("vrstafilma","id");
+        super("vrstafilma","idvrstafilma");
     }
     private static vrstafilmaDaoSQLImpl instance=null;
     public static vrstafilmaDaoSQLImpl getInstance(){

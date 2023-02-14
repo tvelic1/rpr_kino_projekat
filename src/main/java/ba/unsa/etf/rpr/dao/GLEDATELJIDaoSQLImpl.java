@@ -13,7 +13,7 @@ import java.util.*;
 public class GLEDATELJIDaoSQLImpl extends AbstractDao<GLEDATELJI> implements  GLEDATELJIDao{
 
     public GLEDATELJIDaoSQLImpl(){
-        super("GLEDATELJI","id");
+        super("GLEDATELJI","idGLEDATELJI");
     }
     private static GLEDATELJIDaoSQLImpl instance=null;
     public static GLEDATELJIDaoSQLImpl getInstance(){
