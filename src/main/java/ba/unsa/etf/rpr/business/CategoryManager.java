@@ -44,6 +44,9 @@ public vrstafilma add(vrstafilma v) throws filmoviException{
         return DaoFactory.vrstaaDao().getAll();
 
         }
+        public vrstafilma getById(int a) throws filmoviException{
+        return DaoFactory.vrstaaDao().getById(a);
+        }
 
 
 }
