@@ -107,7 +107,23 @@ public class filmoviDaoSQLImpl extends AbstractDao<filmovi> implements filmoviDa
         }
 
     }
+    public filmovi update(filmovi item ) throws filmoviException{
 
+        try{
+            PreparedStatement st= getCon().prepareStatement("UPDATE filmovi SET ime=?, ocjena=?,trajanje=? WHERE idfilma=?");
+            st.setString(1, item.getIme());
+            st.setString(2, item.getOcjena());
+            st.setInt(3,item.getTrajanje());
+            st.setInt(4,item.getId());
+            st.executeUpdate();
+            return item;
+
+
+        } catch (SQLException e) {
+            throw new filmoviException(e.getMessage(),e);
+        }
+
+    }
 
 
 }

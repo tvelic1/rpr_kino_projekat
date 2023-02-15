@@ -38,7 +38,7 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
 
     public T getById(int id) throws filmoviException{
 
-        String query="SELECT * FROM "+tableName+" WHERE id" + this.tableName + " = ?";
+        String query="SELECT * FROM "+tableName+" WHERE " + this.idName + " = ?";
        // System.out.println("Query za getById " + query);
         try{
             PreparedStatement st=this.con.prepareStatement(query);
@@ -164,23 +164,7 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
             throw new filmoviException(e.getMessage(),e);
         }
     }
-    public filmovi update(filmovi item ) throws filmoviException{
 
-        try{
-            PreparedStatement st= getCon().prepareStatement("UPDATE filmovi SET ime=?, ocjena=?,trajanje=? WHERE idfilma=?");
-            st.setString(1, item.getIme());
-            st.setString(2, item.getOcjena());
-            st.setInt(3,item.getTrajanje());
-            st.setInt(4,item.getId());
-            st.executeUpdate();
-            return item;
-
-
-        } catch (SQLException e) {
-            throw new filmoviException(e.getMessage(),e);
-        }
-
-    }
     public List<T> executeQuery(String q, Object[] param) throws filmoviException{
         try{
             PreparedStatement st= getCon().prepareStatement(q);
