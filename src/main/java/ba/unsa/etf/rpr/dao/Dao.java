@@ -14,5 +14,6 @@ public interface Dao<tip> {
     void delete1(String id) throws filmoviException;
     tip getById(int id) throws filmoviException;
     tip add(tip item) throws filmoviException;
+    tip update(tip item) throws filmoviException;
     //filmovi update(filmovi item) throws filmoviException;
 }

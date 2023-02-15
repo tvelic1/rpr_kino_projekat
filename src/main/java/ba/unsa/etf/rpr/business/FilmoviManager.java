@@ -21,7 +21,7 @@ public class FilmoviManager  {
         DaoFactory.filmDao().delete(id);
 
     }
-    public filmovi getByID(int id) throws filmoviException{
+    public filmovi getById(int id) throws filmoviException{
         return DaoFactory.filmDao().getById(id);
 
     }

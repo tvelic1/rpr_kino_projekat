@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class vrstafilma implements Idable{
 
+
     private int id;
     private String zanr;
 

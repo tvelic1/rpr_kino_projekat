@@ -26,6 +26,33 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
             e.printStackTrace();
         }
     }
+    public T update(T item) throws filmoviException{
+        Map<String, Object> row = object2row(item);
+        String updateColumns = prepareUpdateParts(row);
+        StringBuilder builder = new StringBuilder();
+        builder.append("UPDATE ")
+                .append(tableName)
+                .append(" SET ")
+                .append(updateColumns)
+                .append(" WHERE ")
+                .append(tableName)
+                .append("_id = ?");
+
+        try{
+            PreparedStatement stmt = getCon().prepareStatement(builder.toString());
+            int counter = 1;
+            for (Map.Entry<String, Object> entry: row.entrySet()) {
+                if (entry.getKey().equals(this.idName)) continue; // skip ID
+                stmt.setObject(counter, entry.getValue());
+                counter++;
+            }
+            stmt.setObject(counter, item.getId());
+            stmt.executeUpdate();
+            return item;
+        }catch (SQLException e){
+            throw new filmoviException(e.getMessage(), e);
+        }
+    }
     public Connection getCon(){
         return this.con;
     }
@@ -39,7 +66,6 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
     public T getById(int id) throws filmoviException{
 
         String query="SELECT * FROM "+tableName+" WHERE " + this.idName + " = ?";
-       // System.out.println("Query za getById " + query);
         try{
             PreparedStatement st=this.con.prepareStatement(query);
             st.setInt(1,id);
