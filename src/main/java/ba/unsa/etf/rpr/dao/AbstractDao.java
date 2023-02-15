@@ -91,7 +91,7 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
     }
 
     public void delete(int id) throws filmoviException{
-        String q="DELETE FROM filmovi WHERE idfilma=?";
+        String q="DELETE FROM "+tableName+" WHERE "+idName+"=?";
         try{
             PreparedStatement st=getCon().prepareStatement(q,Statement.RETURN_GENERATED_KEYS);
             st.setInt(1,id);
