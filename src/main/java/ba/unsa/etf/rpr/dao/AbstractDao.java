@@ -24,6 +24,14 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
             this.con=DriverManager.getConnection(url,user,pass);
         }catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            Runtime.getRuntime().addShutdownHook(new Thread(()->{
+                try{
+                    con.close();
+                } catch (SQLException s){
+                    s.printStackTrace();
+                }
+            }));
         }
     }
     public T update(T item) throws filmoviException{
@@ -74,7 +82,7 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
                 T result=row2object(rs);
                 rs.close();
                 return result;
-            }else{
+            }else{ rs.close();
                 throw new filmoviException("Object not found!");
             }
         } catch (SQLException e) {

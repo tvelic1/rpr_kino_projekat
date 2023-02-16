@@ -78,4 +78,10 @@ public class RezervacijaController {
         stage.setResizable(false);
         stage.show();
     }
+
+    public void dell(ActionEvent actionEvent) throws filmoviException {
+        Rezervacija f=vieww.getSelectionModel().getSelectedItem();
+        manager.delete(f.getId());
+        vieww.setItems(FXCollections.observableList(manager.getAll()));
+    }
 }

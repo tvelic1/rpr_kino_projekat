@@ -17,4 +17,7 @@ public class RezervacijaManager {
     public List<Rezervacija>getFiltered2(String a) throws filmoviException{
         return DaoFactory.rezDao().getFiltered2(a);
     }
+    public void delete(int a) throws filmoviException{
+        DaoFactory.rezDao().delete(a);
+    }
 }
