@@ -54,6 +54,7 @@ public class RegisterController extends Application {
             Scene scene = new Scene(gridPane, 800, 500);
             // Set the scene in primary stage
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
 
             primaryStage.show();
         }

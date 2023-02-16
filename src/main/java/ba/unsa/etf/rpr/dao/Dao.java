@@ -9,6 +9,7 @@ import java.util.List;
 public interface Dao<tip> {
     List<tip> getAll() throws filmoviException;
     List<tip> getFiltered(String a) throws filmoviException;
+    List<tip> getFiltered2(String a) throws filmoviException;
 
     void delete(int id) throws filmoviException;
     void delete1(String id) throws filmoviException;

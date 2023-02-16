@@ -78,6 +78,7 @@
             <Button layoutX="19.0" layoutY="384.0" mnemonicParsing="false" onAction="#delete" text="Delete" translateX="-200.0" translateY="5.0" />
             <Button layoutX="8.0" layoutY="359.0" mnemonicParsing="false" onAction="#load" prefHeight="26.0" prefWidth="51.0" text="Load" translateX="-189.0" />
             <Button layoutX="119.0" layoutY="18.0" mnemonicParsing="false" onAction="#goedit" prefHeight="26.0" prefWidth="46.0" text="Edit" />
+            <Button layoutX="105.0" layoutY="58.0" mnemonicParsing="false" onAction="#reserve" prefHeight="26.0" prefWidth="94.0" text="Reservations" />
          </children>
       </AnchorPane>
    </right>

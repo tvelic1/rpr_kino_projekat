@@ -200,6 +200,18 @@ public class KinoController  {
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    public void reserve(ActionEvent event) throws IOException {
+        Parent root;
+        Stage stage;
+        Scene scene;
+        root = FXMLLoader.load(getClass().getResource("/rezervacija.fxml"));
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
         stage.show();
     }
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.RezervacijaController">
+   <children>
+      <ListView fx:id="lista" layoutY="100.0" prefHeight="268.0" prefWidth="90.0" />
+      <TableView fx:id="vieww" layoutX="108.0" layoutY="121.0" prefHeight="200.0" prefWidth="239.0">
+        <columns>
+          <TableColumn fx:id="id2" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="ime2" prefWidth="75.0" text="ime" />
+            <TableColumn fx:id="prezime2" prefWidth="75.0" text="prezime" />
+        </columns>
+      </TableView>
+      <TextField fx:id="imetekst" layoutX="437.0" layoutY="175.0" />
+      <TextField fx:id="prezimetekst" layoutX="438.0" layoutY="244.0" />
+      <ComboBox fx:id="cmb" layoutX="429.0" layoutY="37.0" prefWidth="150.0" />
+      <Button layoutX="494.0" layoutY="309.0" mnemonicParsing="false" onAction="#regist" text="Reserve" />
+      <Button layoutX="392.0" layoutY="356.0" mnemonicParsing="false" onAction="#goback" text="back" />
+   </children>
+</AnchorPane>

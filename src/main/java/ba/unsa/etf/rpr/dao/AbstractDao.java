@@ -97,6 +97,23 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
         }
 
     }
+    public List<T> getFiltered2(String a) throws filmoviException{
+        String query="SELECT r.idRezervacija,r.Imee,r.Prezime,r.idfilm FROM filmovi f,Rezervacija r WHERE idfilma=idfilm AND f.IME=?";
+        List<T> results=new ArrayList<>();
+        try{PreparedStatement st=this.con.prepareStatement(query);
+            st.setString(1,a);
+            ResultSet rs=st.executeQuery();
+            while (rs.next()) {
+                T object=row2object(rs);
+                results.add(object);
+            } rs.close();
+            return results;
+        }catch (SQLException e){
+            throw  new filmoviException(e.getMessage(),e);
+        }
+
+    }
+
 
     public List<T> getAll() throws filmoviException{
         String q="SELECT * FROM "+tableName;

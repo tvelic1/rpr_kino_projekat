@@ -8,10 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
-public class vrsta {
+public class Mocking {
 
     private CategoryManager cm;
     //public vrstafilma v=new vrstafilma("anc");
