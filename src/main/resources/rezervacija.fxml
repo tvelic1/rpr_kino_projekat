@@ -5,21 +5,21 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.RezervacijaController">
    <children>
-      <ListView fx:id="lista" layoutY="2.0" prefHeight="400.0" prefWidth="90.0" />
-      <TableView fx:id="vieww" layoutX="92.0" layoutY="3.0" prefHeight="400.0" prefWidth="255.0">
+      <ListView fx:id="lista" layoutY="2.0" prefHeight="400.0" prefWidth="108.0" />
+      <TableView fx:id="vieww" layoutX="103.0" layoutY="2.0" prefHeight="400.0" prefWidth="273.0">
         <columns>
-          <TableColumn fx:id="id2" prefWidth="75.0" text="id" />
-          <TableColumn fx:id="ime2" prefWidth="75.0" text="ime" />
-            <TableColumn fx:id="prezime2" prefWidth="88.00001831054686" text="prezime" />
+          <TableColumn fx:id="id2" prefWidth="67.19998168945312" text="id" />
+          <TableColumn fx:id="ime2" prefWidth="96.00001525878906" text="ime" />
+            <TableColumn fx:id="prezime2" prefWidth="108.0" text="prezime" />
         </columns>
       </TableView>
       <TextField fx:id="imetekst" layoutX="429.0" layoutY="153.0" />
       <TextField fx:id="prezimetekst" layoutX="429.0" layoutY="224.0" />
-      <ComboBox fx:id="cmb" layoutX="428.0" layoutY="75.0" prefWidth="150.0" />
+      <ComboBox fx:id="cmb" layoutX="429.0" layoutY="75.0" prefWidth="150.0" />
       <Button layoutX="474.0" layoutY="274.0" mnemonicParsing="false" onAction="#regist" text="Rezerviši" />
-      <Button layoutX="552.0" layoutY="363.0" mnemonicParsing="false" onAction="#goback" text="Back" />
-      <Button layoutX="354.0" layoutY="363.0" mnemonicParsing="false" onAction="#dell" text="Delete" />
-      <Label layoutX="444.0" layoutY="44.0" prefHeight="18.0" prefWidth="108.0" text="Izaberite film :" />
+      <Button layoutX="558.0" layoutY="375.0" mnemonicParsing="false" onAction="#goback" text="Back" />
+      <Button layoutX="377.0" layoutY="375.0" mnemonicParsing="false" onAction="#dell" text="Delete" />
+      <Label layoutX="458.0" layoutY="44.0" prefHeight="18.0" prefWidth="108.0" text="Izaberite film :" />
       <Label layoutX="479.0" layoutY="135.0" text="Vaše ime" />
       <Label layoutX="479.0" layoutY="194.0" text="Vaše prezime" />
    </children>
