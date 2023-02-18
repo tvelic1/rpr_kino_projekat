@@ -45,8 +45,6 @@ public class KinoController  {
     public TextField imeee;
     public Button butonn;
 
-    private ObservableList<String> names;
-    public Button closeButton;
     public ListView<vrstafilma> listView;
     public FilmoviManager manager=new FilmoviManager();
 
