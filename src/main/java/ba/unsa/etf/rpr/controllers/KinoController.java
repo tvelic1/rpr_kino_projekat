@@ -51,14 +51,6 @@ public class KinoController  {
     public FilmoviManager manager=new FilmoviManager();
 
 
-    public void exit(ActionEvent actionEvent){
-        System.exit(0);
-    }
-    public void close(ActionEvent actionEvent){
-        Stage stage=(Stage)closeButton.getScene().getWindow();
-        stage.close();
-    }
-
     @FXML
     public void initialize() throws filmoviException{
 
