@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,15 +34,16 @@ public class KinoController  {
     public TableColumn<filmovi,Integer> id1;
     public TableColumn<filmovi,Integer> trajanje;
     public TableColumn<filmovi,String> ocjena;
+
     public TableColumn<filmovi,String>ime;
 
     public TextField text;
     public Button addbutton;
-
     public TextField trajanjee;
     public TextField zaanr;
     public TextField ocjenaa;
     public TextField imeee;
+    public Button butonn;
 
     private ObservableList<String> names;
     public Button closeButton;
@@ -55,11 +57,7 @@ public class KinoController  {
     public void close(ActionEvent actionEvent){
         Stage stage=(Stage)closeButton.getScene().getWindow();
         stage.close();
-
-
     }
-
-
 
     @FXML
     public void initialize() throws filmoviException{
@@ -73,13 +71,8 @@ public class KinoController  {
         tableview.setItems(FXCollections.observableList(manager.getAll()));
 
         listView.setItems(FXCollections.observableList(man.getAll()));
-        //AtomicInteger a = new AtomicInteger();
-        //AtomicInteger a = new AtomicInteger();
         listView.getSelectionModel().selectedItemProperty().addListener((obs,o,n)->{
             if(n!=null){
-
-
-
                 try {
                     tableview.setItems(FXCollections.observableList(manager.getFiltered(n.getZanr())));
                 } catch (filmoviException e) {
@@ -108,22 +101,26 @@ public class KinoController  {
 
 
 
-    public void addcat(ActionEvent actionEvent) throws IOException, ClassNotFoundException, filmoviException {
+    public void addcat(ActionEvent actionEvent) throws  filmoviException {
+        Window owner = addbutton.getScene().getWindow();
+        boolean x=false;
      vrstafilma v=new vrstafilma();
      List<vrstafilma> vr=new ArrayList<>(man.getAll());
      for(vrstafilma f: vr){
-         if(f.getZanr().equals(tekst.getText())) throw new filmoviException("Vec postoji");
-     }
+         if(f.getZanr().equals(tekst.getText())){ //throw new filmoviException("Vec postoji");
+              x=true; break;}
+     }if(x){
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Already exist");
+         //   tekst.setText("");
+
+        }
      v.setZanr(tekst.getText());
      man.add(v);
      listView.setItems(FXCollections.observableList(man.getAll()));
      tekst.setText("");
     }
 
-  /*  public void search(ActionEvent actionEvent) throws filmoviException {
-        ObservableList<filmovi>items=FXCollections.observableList(manager.search(text.getText()));
-        tableview.setItems(items);
-    }*/
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -131,7 +128,9 @@ public class KinoController  {
     CategoryManager man=new CategoryManager();
     FilmoviManager fii=new FilmoviManager();
 
+
     public void adddd(ActionEvent actionEvent) throws filmoviException {
+        Window owner = butonn.getScene().getWindow();
         ObservableList<filmovi>itemss=FXCollections.observableList(manager.search(imeee.getText()));
         if(itemss.isEmpty()&&!zaanr.getText().isEmpty() && !ocjenaa.getText().isEmpty() && !trajanjee.getText().isEmpty() && !imeee.getText().isEmpty()){
         filmovi f=new filmovi();
@@ -159,7 +158,11 @@ public class KinoController  {
                 ocjenaa.setText("");
                 imeee.setText("");
                 trajanjee.setText("");
-           }}
+           }}else{
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Invalid data");
+
+        }
     }
 
     public void clear(ActionEvent actionEvent) {
@@ -169,11 +172,12 @@ public class KinoController  {
         ocjenaa.setText("");
     }
 
-    public void logoutt(ActionEvent actionEvent) throws IOException {
+    public void logoutt(ActionEvent actionEvent)  {
        System.exit(0);
-    } FilmoviManager fm=new FilmoviManager();
+    }
+    FilmoviManager fm=new FilmoviManager();
 
-    public void delete(ActionEvent actionEvent) throws filmoviException, IOException, ClassNotFoundException {
+    public void delete(ActionEvent actionEvent) throws filmoviException {
        filmovi film = (filmovi) tableview.getSelectionModel().getSelectedItem();
        vrstafilma vm=listView.getSelectionModel().getSelectedItem();
        if(film!=null ){
@@ -193,9 +197,7 @@ public class KinoController  {
     }
 
     public void goedit(ActionEvent event) throws IOException {
-        Parent root;
-        Stage stage;
-        Scene scene;
+
         root = FXMLLoader.load(getClass().getResource("/edit.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
@@ -205,13 +207,19 @@ public class KinoController  {
     }
 
     public void reserve(ActionEvent event) throws IOException {
-        Parent root;
-        Stage stage;
-        Scene scene;
+
         root = FXMLLoader.load(getClass().getResource("/rezervacija.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+    private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.initOwner(owner);
+        alert.show();
     }
 }
