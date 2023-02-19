@@ -67,15 +67,10 @@ public class EditController {
     public void upd(ActionEvent event) throws filmoviException, IOException {
 
      filmovi  f=new filmovi();
-      //  System.out.println(a);
      f.setId(a);
-       // System.out.println(fm.getIdfilma(model.ime.get()));
      f.setIme(model.ime.get());
-       // System.out.println(fm.getIdfilma(model.ime.get()));
      f.setTrajanje(Integer.parseInt(model.trajanje.get()));
-       // System.out.println(Integer.parseInt(model.trajanje.get()));
      f.setOcjena(model.ocjena.get());
-      //  System.out.println(model.ocjena.get());
         fm.update(f);
         Parent root;
         Stage stage;
@@ -120,7 +115,7 @@ public class EditController {
         f.setTrajanje(Integer.parseInt(trajanje.get()));
         f.setOcjena(ocjena.get());
         f.setIme(ime.get());
-       // f.setId_vrsta_filma();
+
         return f;
     }
 

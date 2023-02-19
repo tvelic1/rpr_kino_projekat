@@ -4,7 +4,7 @@ import ba.unsa.etf.rpr.business.CategoryManager;
 import ba.unsa.etf.rpr.business.FilmoviManager;
 import ba.unsa.etf.rpr.domain.vrstafilma;
 import ba.unsa.etf.rpr.domain.filmovi;
-//import ba.unsa.etf.rpr.domain.QuoteHistory;
+
 
 
 import org.apache.commons.cli.*;
@@ -76,7 +76,7 @@ public class AppFX {
 
         CommandLine cl = commandLineParser.parse(options, args);
 
-//        while(true) {
+
         if((cl.hasOption(addfilms.getOpt()) || cl.hasOption(addfilms.getLongOpt())) && cl.hasOption((categoryDefinition.getLongOpt())) && cl.hasOption(ocjenaDefinition.getLongOpt())&&cl.hasOption(trajanjeDefinition.getLongOpt())){
             FilmoviManager filmManager = new FilmoviManager();
             CategoryManager categoryManager = new CategoryManager();
@@ -88,24 +88,18 @@ public class AppFX {
                 System.exit(1);
             }
 
-//                if(!category.getName().equals(cl.getArgList().get(1))){
-//                    System.out.println("There is no category with passed name! Try again.");
-//                    System.exit(-1);
-//                }
             filmovi film = new filmovi();
             film.setId_vrsta_filma(category);
-            /*quote.setQuote(cl.getArgList().get(0));
-            quote.setCreated(Date.valueOf(LocalDate.now()));*/
             film.setIme(cl.getArgList().get(0));
             film.setOcjena(cl.getArgList().get(2));
             film.setTrajanje(Integer.parseInt(cl.getArgList().get(3)));
             filmManager.add(film);
             System.out.println("You successfully added movie to database!");
-//                break;
+
         } else if(cl.hasOption(getfilms.getOpt()) || cl.hasOption(getfilms.getLongOpt())){
             FilmoviManager filmManager = new FilmoviManager();
             filmManager.getAll().forEach(q -> System.out.println(q.getIme()));
-//                break;
+
         } else if(cl.hasOption(addCategory.getOpt()) || cl.hasOption(addCategory.getLongOpt())){
             try {
                 CategoryManager categoryManager = new CategoryManager();
@@ -113,22 +107,22 @@ public class AppFX {
                 cat.setZanr(cl.getArgList().get(0));
                 categoryManager.add(cat);
                 System.out.println("Category has been added successfully");
-//                    break;
+
             }catch(Exception e) {
                 System.out.println("There is already category with same name in database! Try again");
                 System.exit(1);
-//                   break;
+
             }
 
         } else if(cl.hasOption(getCategories.getOpt()) || cl.hasOption(getCategories.getLongOpt())){
             CategoryManager categoryManager = new CategoryManager();
             categoryManager.getAll().forEach(c -> System.out.println(c.getZanr()));
-//                break;
+
         } else {
             printFormattedOptions(options);
             System.exit(-1);
-//                break;
+
         }
-//        }
+
     }
 }
