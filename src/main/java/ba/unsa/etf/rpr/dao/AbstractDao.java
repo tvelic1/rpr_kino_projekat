@@ -148,7 +148,7 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
 
     public void delete(int id) throws filmoviException{
         String q="DELETE FROM "+tableName+" WHERE "+idName+"=?";
-        System.out.println(q);
+       // System.out.println(q);
         try{
             PreparedStatement st=getCon().prepareStatement(q,Statement.RETURN_GENERATED_KEYS);
             st.setInt(1,id);
