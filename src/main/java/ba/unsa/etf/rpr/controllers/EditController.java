@@ -20,6 +20,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+/**
+ *
+ * @author tvelic1
+ *
+ */
 
 public class EditController {
 
@@ -80,6 +85,7 @@ public class EditController {
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
 
     }
 

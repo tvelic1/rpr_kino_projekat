@@ -8,6 +8,11 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
+/**
+ *
+ * Abstract methods
+ */
+
 public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
     private Connection con;
     private String tableName;

@@ -26,7 +26,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ *
+ * @author tvelic1
+ *
+ */
 
 public class KinoController  {
     public TextField tekst;
@@ -204,6 +208,7 @@ public class KinoController  {
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
     }
     private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
         Alert alert = new Alert(alertType);

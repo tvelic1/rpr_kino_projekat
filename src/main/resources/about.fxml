@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.AboutController">
+   <children>
+      <TextArea fx:id="tekst" prefHeight="400.0" prefWidth="600.0" text="Ova aplikacija simulira aplikaciju za kino, gdje je moguće:&#10;- dodavati nove filmove u bazu&#10;- editovati već postojeće filmove&#10;-dodavati nove kategorije filmova&#10;-vršiti rezervaciju za određeni film&#10;&#10;Također filmovi su raspoređeni po kategorijama, gdje se klikom na datu kategoriju izlistavaju postojeći&#10;filmovi za tu kategoriju.&#10;&#10;Kada pritisnete dugme &quot;Reservations&quot;, otvara se nova scena gdje je moguće rezervisati kartu za neki film,&#10;također klikom na neki film u ListView dobijate sve osobe koje su izvršile rezervaciju za taj dati film.&#10;&#10;Aplikacija posjeduje i zaštitu od podataka koji bi mogli biti besmisleni, naprimjer nije dozvoljeno dodati film&#10;ukoliko nisu ispunjeni svi traženi podaci, te naprimjer ukoliko već neka kategorija postoji ili ukoliko već neki &#10;film postoji nije ga dozvoljeno dodati opet.&#10;&#10;Brisanje postojećeg filma ili postojeće kategorije se vrši selektovanjem tog filma ili kategorije te izabiranjem&#10;dugmeta delete, gdje je također izvršena zaštita za brisanje nekih filmova ili kategorija koje sadrže rezervisane&#10;karte odnosno ukoliko postoje ti filmovi za tu kategoriju, da ne bi bilo problema sa bazom(zbog Foreign Key).&#10;&#10;Za dodavanjeg novog filma nije korišten nikakav choice box ili nesto slicno za odabiranje kategorije jer je&#10;moguće dodati novu kategoriju i putem dodavanje filma stavljajući za žanr neki nepostojeći do tada." />
+      <Button layoutX="502.0" layoutY="22.0" mnemonicParsing="false" onAction="#log" prefHeight="26.0" prefWidth="96.0" text="Back to login" />
+   </children>
+</AnchorPane>

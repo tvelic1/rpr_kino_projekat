@@ -6,6 +6,10 @@ import ba.unsa.etf.rpr.domain.vrstafilma;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+/**
+ *
+ * methods for category table
+ */
 
 public class CategoryManager {
     public void validateCategoryName(String name ) throws filmoviException{

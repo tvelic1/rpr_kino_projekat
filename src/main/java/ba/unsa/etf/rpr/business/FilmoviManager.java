@@ -5,6 +5,10 @@ import ba.unsa.etf.rpr.domain.filmovi;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 
 import java.util.List;
+/**
+ *
+ *  methods for filmovi
+ */
 
 
 public class FilmoviManager  {

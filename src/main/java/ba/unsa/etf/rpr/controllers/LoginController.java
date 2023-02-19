@@ -24,21 +24,20 @@ public class LoginController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private Stage stage1;
-    private Scene scene1;
-    private Parent root1;
+
     @FXML
     private PasswordField passwordField;
     @FXML
     private TextField emailIdField;
 
 
-    public void register1(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/register.fxml"));
+    public void about(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/about.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
 
     }
 
@@ -78,6 +77,7 @@ public class LoginController {
             scene=new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setResizable(false);
 
 
         }

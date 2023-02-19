@@ -45,9 +45,6 @@ public class RezervacijaController {
         vieww.setItems(FXCollections.observableList(manager.getAll()));
         lista.getSelectionModel().selectedItemProperty().addListener((obs,o,n)->{
             if(n!=null){
-
-
-
                 try {
                     vieww.setItems(FXCollections.observableList(manager.getFiltered2(n.getIme())));
                 } catch (filmoviException e) {
