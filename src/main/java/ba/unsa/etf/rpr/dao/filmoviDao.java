@@ -9,5 +9,5 @@ public interface filmoviDao extends Dao<filmovi>{
     filmovi randomFilm() throws filmoviException;
      String getZaanr(int a) throws filmoviException;
      int getIdfilma(String ime) throws filmoviException;
-    public filmovi update(filmovi item ) throws filmoviException;
+     filmovi update(filmovi item ) throws filmoviException;
 }

@@ -23,7 +23,6 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -96,7 +95,7 @@ public class KinoController  {
 
 
 
-    public void addcat(ActionEvent actionEvent) throws  filmoviException {
+    public void addCategory(ActionEvent actionEvent) throws  filmoviException {
         Window owner = addbutton.getScene().getWindow();
         boolean x=false;
      vrstafilma v=new vrstafilma();
@@ -107,13 +106,12 @@ public class KinoController  {
      }if(x){
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Already exist");
-         //   tekst.setText("");
 
-        }
+        }else{
      v.setZanr(tekst.getText());
      man.add(v);
      listView.setItems(FXCollections.observableList(man.getAll()));
-     tekst.setText("");
+     tekst.setText("");}
     }
 
     private Stage stage;
@@ -124,7 +122,7 @@ public class KinoController  {
     FilmoviManager fii=new FilmoviManager();
 
 
-    public void adddd(ActionEvent actionEvent) throws filmoviException {
+    public void addMovie(ActionEvent actionEvent) throws filmoviException {
         Window owner = butonn.getScene().getWindow();
         ObservableList<filmovi>itemss=FXCollections.observableList(manager.search(imeee.getText()));
         if(itemss.isEmpty()&&!zaanr.getText().isEmpty() && !ocjenaa.getText().isEmpty() && !trajanjee.getText().isEmpty() && !imeee.getText().isEmpty()){
@@ -179,7 +177,7 @@ public class KinoController  {
        fm.delete(film.getId());
         tableview.setItems(FXCollections.observableList(fm.getAll()));}
     else if(vm!=null ){
-        man.delete1(vm.getZanr());
+        man.deleteByName(vm.getZanr());
         listView.setItems(FXCollections.observableList(man.getAll()));
 
         }

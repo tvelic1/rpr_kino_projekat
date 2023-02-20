@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface GLEDATELJIDao extends Dao<GLEDATELJI> {
     List<GLEDATELJI> traziPoId(int id1,int id2)throws filmoviException;
-    //List<GLEDATELJI> trazipoImenu(String pocetak,String kraj);
+
     boolean validate(String mail, String password) throws SQLException;
    void insertRecord(String name, String mail, String password) throws SQLException;
 }

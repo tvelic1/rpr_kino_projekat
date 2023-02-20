@@ -22,7 +22,12 @@ public class FilmoviManager  {
         return DaoFactory.filmDao().searchByName(text);
     }
     public void delete (int id) throws filmoviException{
-        DaoFactory.filmDao().delete(id);
+        try{
+        DaoFactory.filmDao().delete(id);}
+        catch(filmoviException e){
+            if(e.getMessage().contains("FOREIGN KEY"))
+                throw new filmoviException("Ne možete obrisati film koji je povezan sa rezervacijama, prvo morate obrisati rezervacije");
+            throw e;}
 
     }
     public filmovi getById(int id) throws filmoviException{

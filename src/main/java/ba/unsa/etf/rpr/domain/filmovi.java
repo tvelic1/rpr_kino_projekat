@@ -1,5 +1,10 @@
 package ba.unsa.etf.rpr.domain;
 import java.util.*;
+/**
+ *
+ * @author tvelic1
+ *
+ */
 
 public class filmovi implements Idable {
 

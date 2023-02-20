@@ -3,7 +3,6 @@ package ba.unsa.etf.rpr;
 import ba.unsa.etf.rpr.business.CategoryManager;
 import ba.unsa.etf.rpr.business.FilmoviManager;
 import ba.unsa.etf.rpr.business.GledateljiManager;
-import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.filmovi;
 import ba.unsa.etf.rpr.domain.vrstafilma;
 import org.junit.jupiter.api.Test;
@@ -11,8 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+/**
+ *
+ * @author tvelic1
+ *
+ */
 
 public class Testing {
     private FilmoviManager filmm=new FilmoviManager();
@@ -30,7 +33,7 @@ public class Testing {
         boolean x=false;
         try{ List<vrstafilma> vr=cm.getAll();
             for(vrstafilma vf:vr){
-                if(vf.getZanr().equals("Horor"))
+                if(vf.getZanr().equals("Komedija"))
                     fil.setId_vrsta_filma(vf); break;
             }
         filmm.add(fil);
@@ -52,10 +55,10 @@ public class Testing {
         try {
             List<vrstafilma> lista = cm.getAll();
             for(vrstafilma vm:lista){
-                if(vm.getZanr().equals("Horor")){ f=vm; ima=true;break;}
+                if(vm.getZanr().equals("Komedija")){ f=vm; ima=true;break;}
             }
             if(ima){
-      assertThrows(filmoviException.class,()->{cm.delete1("Horor");});
+      assertThrows(filmoviException.class,()->{cm.deleteByName("Komedija");});
             }
         }catch(filmoviException ff){
             throw new RuntimeException(ff);
@@ -99,7 +102,7 @@ public class Testing {
         try{
        vrstafilma vm=cm.getById(1);
 
-        if(vm.getZanr().equals("Horor")) z=true;} catch(filmoviException e){
+        if(vm.getZanr().equals("Komedija")) z=true;} catch(filmoviException e){
         throw new RuntimeException(e);
     }
 

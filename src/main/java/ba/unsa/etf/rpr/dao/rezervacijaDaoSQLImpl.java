@@ -27,7 +27,6 @@ public class rezervacijaDaoSQLImpl extends AbstractDao<Rezervacija> implements r
             g.setImee(rs.getString("ImeE"));
             g.setIdfilm(DaoFactory.filmDao().getById(rs.getInt("idfilm")));
             g.setPrezime(rs.getString("Prezime"));
-            //g.setPassword(rs.getString("password"));
             return g;
 
         }catch(SQLException e){

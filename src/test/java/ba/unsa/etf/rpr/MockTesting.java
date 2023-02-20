@@ -10,10 +10,11 @@ import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.verify;
 
-public class Mocking {
+
+public class MockTesting {
 
     private CategoryManager cm;
-    //public vrstafilma v=new vrstafilma("anc");
+
 
     @Mock
     private vrstafilmaDao vrstadao;

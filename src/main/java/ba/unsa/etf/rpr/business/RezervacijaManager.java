@@ -6,6 +6,11 @@ import ba.unsa.etf.rpr.domain.filmovi;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 
 import java.util.List;
+/**
+ *
+ * @author tvelic1
+ *
+ */
 
 public class RezervacijaManager {
     public List<Rezervacija> getAll() throws filmoviException {

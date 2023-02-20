@@ -5,6 +5,11 @@ import ba.unsa.etf.rpr.exceptions.filmoviException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+/**
+ *
+ * @author tvelic1
+ *
+ */
 
 public interface Dao<tip> {
     List<tip> getAll() throws filmoviException;
@@ -16,5 +21,5 @@ public interface Dao<tip> {
     tip getById(int id) throws filmoviException;
     tip add(tip item) throws filmoviException;
     tip update(tip item) throws filmoviException;
-    //filmovi update(filmovi item) throws filmoviException;
+
 }

@@ -3,8 +3,6 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 import ba.unsa.etf.rpr.domain.vrstafilma;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 /**
  *
@@ -33,7 +31,7 @@ public vrstafilma add(vrstafilma v) throws filmoviException{
 
         }
 
-        public void delete1(String name) throws filmoviException{
+        public void deleteByName(String name) throws filmoviException{
         try{
             DaoFactory.vrstaaDao().delete1(name);
         }catch(filmoviException e){
