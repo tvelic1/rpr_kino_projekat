@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 
@@ -29,8 +30,17 @@ public class RezervacijaController {
     public TextField imetekst;
     public TextField prezimetekst;
     public ComboBox<filmovi> cmb;
+    public Button registerButton;
     FilmoviManager fm=new FilmoviManager();
     RezervacijaManager manager=new RezervacijaManager();
+    private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.initOwner(owner);
+        alert.show();
+    }
 
 
 
@@ -55,13 +65,20 @@ public class RezervacijaController {
     }
 
     public void regist(ActionEvent actionEvent) throws filmoviException {
+        Window owner = registerButton.getScene().getWindow();
+        if(!prezimetekst.getText().isEmpty() && !imetekst.getText().isEmpty()){
         filmovi a=cmb.getSelectionModel().getSelectedItem();
         Rezervacija r=new Rezervacija();
         r.setIdfilm(a);
         r.setPrezime(prezimetekst.getText());
         r.setImee(imetekst.getText());
         manager.add(r);
-        vieww.setItems(FXCollections.observableList(manager.getAll()));
+        vieww.setItems(FXCollections.observableList(manager.getAll()));}
+        else{
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                    "Invalid data");
+
+        }
     }
     private Stage stage;
     private Scene scene;
@@ -79,6 +96,10 @@ public class RezervacijaController {
     public void dell(ActionEvent actionEvent) throws filmoviException {
         Rezervacija f=vieww.getSelectionModel().getSelectedItem();
         manager.delete(f.getId());
+        vieww.setItems(FXCollections.observableList(manager.getAll()));
+    }
+
+    public void load(ActionEvent actionEvent) throws filmoviException {
         vieww.setItems(FXCollections.observableList(manager.getAll()));
     }
 }

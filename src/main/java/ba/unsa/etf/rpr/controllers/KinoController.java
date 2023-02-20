@@ -106,6 +106,7 @@ public class KinoController  {
      }if(x){
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Already exist");
+            tekst.setText("");
 
         }else{
      v.setZanr(tekst.getText());
@@ -154,6 +155,11 @@ public class KinoController  {
            }}else{
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Invalid data");
+            zaanr.setText("");
+            ocjenaa.setText("");
+            imeee.setText("");
+            trajanjee.setText("");
+
 
         }
     }
