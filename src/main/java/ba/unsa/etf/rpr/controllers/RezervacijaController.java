@@ -65,7 +65,7 @@ public class RezervacijaController {
                     throw new RuntimeException(e);
                 }
             }
-        }); //imetekst.requestFocus();
+        });
     }
 
     public void regist(ActionEvent actionEvent) throws filmoviException {
@@ -80,12 +80,14 @@ public class RezervacijaController {
         vieww.setItems(FXCollections.observableList(manager.getAll()));
         imetekst.setText("");
         prezimetekst.setText("");
+            cmb.setValue(null);
         }
         else{
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Invalid data");
             imetekst.setText("");
             prezimetekst.setText("");
+            cmb.setValue(null);
 
         }
     }
