@@ -6,6 +6,12 @@ import ba.unsa.etf.rpr.exceptions.filmoviException;
 import java.io.IOException;
 import java.sql.*;
 import java.util.*;
+/**
+ *
+ * @author tvelic1
+ * sql implementation of methods used for gledatelji table
+ *
+ */
 
 
 
@@ -69,7 +75,7 @@ public class GLEDATELJIDaoSQLImpl extends AbstractDao<GLEDATELJI> implements  GL
             stmt.setString(1,mail);
             stmt.setString(2, password);
 
-            System.out.println(stmt);
+            //System.out.println(stmt);
 
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
@@ -90,7 +96,7 @@ public class GLEDATELJIDaoSQLImpl extends AbstractDao<GLEDATELJI> implements  GL
             stmt.setString(2,mail);
             stmt.setString(3,password);
 
-            System.out.println(stmt);
+           // System.out.println(stmt);
 
             stmt.executeUpdate();
         } catch (SQLException e) {

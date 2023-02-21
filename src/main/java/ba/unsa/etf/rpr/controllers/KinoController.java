@@ -121,6 +121,11 @@ public class KinoController  {
 
     CategoryManager man=new CategoryManager();
     FilmoviManager fii=new FilmoviManager();
+    /**
+     *
+     * @param actionEvent
+     * @throws Exception
+     */
 
 
     public void addMovie(ActionEvent actionEvent) throws filmoviException {

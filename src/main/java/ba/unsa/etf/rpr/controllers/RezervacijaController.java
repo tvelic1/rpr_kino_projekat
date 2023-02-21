@@ -21,6 +21,10 @@ import javafx.stage.Window;
 
 import java.io.IOException;
 
+/**
+ * Controller for rezervacija.fxml
+ */
+
 public class RezervacijaController {
     public ListView<filmovi> lista;
     public TableView<Rezervacija> vieww;
@@ -61,22 +65,27 @@ public class RezervacijaController {
                     throw new RuntimeException(e);
                 }
             }
-        });
+        }); //imetekst.requestFocus();
     }
 
     public void regist(ActionEvent actionEvent) throws filmoviException {
         Window owner = registerButton.getScene().getWindow();
-        if(!prezimetekst.getText().isEmpty() && !imetekst.getText().isEmpty()){
         filmovi a=cmb.getSelectionModel().getSelectedItem();
+        if(!prezimetekst.getText().isEmpty() && !imetekst.getText().isEmpty() && a!=null){
         Rezervacija r=new Rezervacija();
         r.setIdfilm(a);
         r.setPrezime(prezimetekst.getText());
         r.setImee(imetekst.getText());
         manager.add(r);
-        vieww.setItems(FXCollections.observableList(manager.getAll()));}
+        vieww.setItems(FXCollections.observableList(manager.getAll()));
+        imetekst.setText("");
+        prezimetekst.setText("");
+        }
         else{
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Invalid data");
+            imetekst.setText("");
+            prezimetekst.setText("");
 
         }
     }

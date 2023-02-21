@@ -31,6 +31,7 @@ public class LoginController {
     private TextField emailIdField;
 
 
+
     public void about(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/about.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -41,13 +42,10 @@ public class LoginController {
 
     }
 
-    public void login(ActionEvent event) throws SQLException, IOException, ClassNotFoundException {
+
+    public void login(ActionEvent event) throws SQLException, IOException {
 
         Window owner = submitButton.getScene().getWindow();
-
-        System.out.println(emailIdField.getText());
-        System.out.println(passwordField.getText());
-
         if (emailIdField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter your email id");

@@ -10,6 +10,9 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+/**
+ * Controller for about.fxml
+ */
 
 public class AboutController {
 
@@ -21,6 +24,11 @@ public class AboutController {
     public void initialize() throws filmoviException{
         tekst.setEditable(false);
     }
+    /**
+     *
+     * @param actionEvent
+     * @throws Exception
+     */
 
     public void log(ActionEvent actionEvent) throws IOException {
 

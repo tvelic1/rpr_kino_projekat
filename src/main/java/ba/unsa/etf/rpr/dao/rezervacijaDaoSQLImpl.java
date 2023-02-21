@@ -9,6 +9,10 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * SQL Implementation of methods used for rezervacija table
+ */
+
 public class rezervacijaDaoSQLImpl extends AbstractDao<Rezervacija> implements rezervacijaDao {
     public rezervacijaDaoSQLImpl() {
         super("Rezervacija", "idRezervacija");

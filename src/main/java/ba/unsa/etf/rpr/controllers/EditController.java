@@ -66,7 +66,12 @@ public class EditController {
 
         });
     }
-    CategoryManager man=new CategoryManager();
+
+    /**
+     *
+     * @param event
+     * @throws Exception
+     */
 
 
     public void updateMovie(ActionEvent event) throws filmoviException, IOException {

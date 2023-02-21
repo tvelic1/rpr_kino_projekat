@@ -20,6 +20,9 @@ import javafx.stage.Window;
 
 import java.io.IOException;
 import java.sql.SQLException;
+/**
+ * Controller for registration.fxml
+ */
 
 
 public class RegisterController extends Application {
@@ -215,6 +218,11 @@ public class RegisterController extends Application {
 
 
         }
+    /**
+     *
+     * @param actionEvent
+     * @throws Exception
+     */
 
     public void login(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/login.fxml"));
