@@ -48,8 +48,8 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
                 .append(" SET ")
                 .append(updateColumns)
                 .append(" WHERE ")
-                .append(tableName)
-                .append("_id = ?");
+                .append(idName)
+                .append(" = ?");
 
         try{
             PreparedStatement stmt = getCon().prepareStatement(builder.toString());

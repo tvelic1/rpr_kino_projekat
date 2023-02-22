@@ -46,11 +46,7 @@
             <Insets bottom="20" left="0" right="0" top="20" />
         </GridPane.margin>
     </Button>
-   <Hyperlink layoutX="-20.0" onAction="#about" text="About app" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
-      <padding>
-         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-      </padding>
-   </Hyperlink>
+   <Hyperlink onAction="#about" prefHeight="24.0" prefWidth="70.0" text="About App" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
    <rowConstraints>
       <RowConstraints />
       <RowConstraints />
