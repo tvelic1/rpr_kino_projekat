@@ -91,17 +91,6 @@ public class EditController {
 
     }
 
-  /*  public void back(ActionEvent event) throws IOException {
-        Parent root;
-        Stage stage;
-        Scene scene;
-        root = FXMLLoader.load(getClass().getResource("/kino.fxml"));
-        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }*/
-
     public class EditModel{
         FilmoviManager fm=new FilmoviManager();
         public SimpleStringProperty ime=new SimpleStringProperty();

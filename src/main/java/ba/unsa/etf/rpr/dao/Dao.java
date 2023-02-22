@@ -15,11 +15,11 @@ public interface Dao<tip> {
     List<tip> getAll() throws filmoviException;
     List<tip> getFiltered(String a) throws filmoviException;
     List<tip> getFiltered2(String a) throws filmoviException;
-
     void delete(int id) throws filmoviException;
-    void deleteByName(String id) throws filmoviException;
+   // void deleteByName(String id) throws filmoviException;
     tip getById(int id) throws filmoviException;
     tip add(tip item) throws filmoviException;
     tip update(tip item) throws filmoviException;
+
 
 }

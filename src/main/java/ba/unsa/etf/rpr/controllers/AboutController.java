@@ -21,7 +21,7 @@ public class AboutController {
     Stage stage;
     Scene scene;
 
-    public void initialize() throws filmoviException{
+    public void initialize(){
         tekst.setEditable(false);
     }
     /**

@@ -31,20 +31,12 @@ public class RegisterController extends Application {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
         @FXML
         private TextField emailIdField;
-
         @FXML
         private PasswordField passwordField;
-
         @FXML
         private Button submitButton;
-
-
-
-
-
         @Override
         public void start(Stage primaryStage) throws Exception {
             primaryStage.setTitle("Registration Form JavaFX Application");

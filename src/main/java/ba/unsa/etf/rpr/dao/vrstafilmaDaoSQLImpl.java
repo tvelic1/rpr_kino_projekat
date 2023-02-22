@@ -36,6 +36,17 @@ public class vrstafilmaDaoSQLImpl extends AbstractDao<vrstafilma> implements vrs
         m.put("zanr",v.getZanr());
         return m;
     }
+    public void deleteByName(String name) throws filmoviException{
+        String q="DELETE FROM vrstafilma WHERE zanr=?";
+        try{
+            PreparedStatement st=getCon().prepareStatement(q,Statement.RETURN_GENERATED_KEYS);
+            st.setString(1,name);
+            st.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new filmoviException(e.getMessage(),e);
+        }
+    }
 
 
 
