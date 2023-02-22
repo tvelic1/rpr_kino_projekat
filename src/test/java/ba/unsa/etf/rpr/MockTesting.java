@@ -33,7 +33,7 @@ public class MockTesting {
 
     }
     @Test
-    public void updateTest() throws filmoviException {
+    public void deleteTest() throws filmoviException {
         vrstafilma v=new vrstafilma();
         v.setZanr("bda");
         vrstadao.add(v);

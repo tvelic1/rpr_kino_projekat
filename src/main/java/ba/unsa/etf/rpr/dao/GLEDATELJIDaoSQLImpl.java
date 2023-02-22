@@ -3,9 +3,13 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.GLEDATELJI;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 
-import java.io.IOException;
-import java.sql.*;
-import java.util.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 /**
  *
  * @author tvelic1
@@ -69,7 +73,7 @@ public class GLEDATELJIDaoSQLImpl extends AbstractDao<GLEDATELJI> implements  GL
         }
     }
     @Override
-    public boolean validate(String mail, String password) throws SQLException {
+    public boolean validate(String mail, String password) {
         try {
             PreparedStatement stmt = getCon().prepareStatement("SELECT * FROM GLEDATELJI WHERE email = ? and password = ?");
             stmt.setString(1,mail);
@@ -89,7 +93,7 @@ public class GLEDATELJIDaoSQLImpl extends AbstractDao<GLEDATELJI> implements  GL
         } return false;}
 
     @Override
-    public void insertRecord(String name, String mail, String password) throws SQLException {
+    public void insertRecord(String name, String mail, String password) {
         try {
             PreparedStatement stmt = getCon().prepareStatement("INSERT INTO GLEDATELJI (IMEPREZIME, email, password) VALUES (?, ?, ?)");
             stmt.setString(1,name);

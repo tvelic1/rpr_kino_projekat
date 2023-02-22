@@ -1,13 +1,14 @@
 package ba.unsa.etf.rpr.dao;
+
 import ba.unsa.etf.rpr.domain.vrstafilma;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.*;
-import java.util.TreeMap;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Map;
-import java.util.Properties;
+import java.util.TreeMap;
 
 public class vrstafilmaDaoSQLImpl extends AbstractDao<vrstafilma> implements vrstafilmaDao {
     public vrstafilmaDaoSQLImpl(){

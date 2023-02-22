@@ -1,17 +1,16 @@
 package ba.unsa.etf.rpr.dao;
-import ba.unsa.etf.rpr.domain.vrstafilma;
+
 import ba.unsa.etf.rpr.domain.filmovi;
+import ba.unsa.etf.rpr.domain.vrstafilma;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.Properties;
-import java.sql.ResultSet;
 
 public class filmoviDaoSQLImpl extends AbstractDao<filmovi> implements filmoviDao {
     public filmoviDaoSQLImpl(){
@@ -81,7 +80,7 @@ public class filmoviDaoSQLImpl extends AbstractDao<filmovi> implements filmoviDa
         return executeQueryUnique("SELECT * FROM filmovi ORDER BY RAND() LIMIT 1", null);
 
     }
-    public String getZaanr(int a) throws filmoviException{
+    public String getZaanr(int a) {
         try{
             PreparedStatement st=getCon().prepareStatement("SELECT zanr FROM vrstafilma WHERE idvrstafilma=?");
             st.setInt(1,a);
@@ -94,7 +93,7 @@ public class filmoviDaoSQLImpl extends AbstractDao<filmovi> implements filmoviDa
         }
 
     }
-    public int getIdfilma(String a) throws filmoviException{
+    public int getIdfilma(String a){
         try{
             PreparedStatement st=getCon().prepareStatement("SELECT idfilma FROM filmovi WHERE IME=?  ");
             st.setString(1,a);

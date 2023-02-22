@@ -1,6 +1,5 @@
 package ba.unsa.etf.rpr.dao;
 
-import ba.unsa.etf.rpr.domain.GLEDATELJI;
 import ba.unsa.etf.rpr.domain.Rezervacija;
 import ba.unsa.etf.rpr.exceptions.filmoviException;
 

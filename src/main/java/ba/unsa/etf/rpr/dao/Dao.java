@@ -1,9 +1,6 @@
 package ba.unsa.etf.rpr.dao;
-import ba.unsa.etf.rpr.domain.filmovi;
-import ba.unsa.etf.rpr.exceptions.filmoviException;
 
-import java.io.IOException;
-import java.sql.SQLException;
+import ba.unsa.etf.rpr.exceptions.filmoviException;
 import java.util.List;
 /**
  *

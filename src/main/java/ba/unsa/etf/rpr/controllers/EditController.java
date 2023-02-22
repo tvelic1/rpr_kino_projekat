@@ -97,6 +97,7 @@ public class EditController {
         public SimpleStringProperty ocjena=new SimpleStringProperty();
         public SimpleStringProperty trajanje=new SimpleStringProperty();
         public SimpleStringProperty zanr=new SimpleStringProperty();
+
         public Integer id;
 
 
