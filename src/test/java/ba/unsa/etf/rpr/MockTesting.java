@@ -37,8 +37,8 @@ public class MockTesting {
         vrstafilma v=new vrstafilma();
         v.setZanr("bda");
         vrstadao.add(v);
-        vrstadao.delete1("bda");
-        verify(vrstadao).delete1("bda");
+        vrstadao.deleteByName("bda");
+        verify(vrstadao).deleteByName("bda");
 
     }
 }

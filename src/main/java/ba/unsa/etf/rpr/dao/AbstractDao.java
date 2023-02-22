@@ -158,7 +158,7 @@ public  abstract  class AbstractDao<T extends Idable> implements Dao<T> {
             throw new filmoviException(e.getMessage(),e);
         }
     }
-    public void delete1(String name) throws filmoviException{
+    public void deleteByName(String name) throws filmoviException{
         String q="DELETE FROM vrstafilma WHERE zanr=?";
         try{
             PreparedStatement st=getCon().prepareStatement(q,Statement.RETURN_GENERATED_KEYS);
