@@ -18,6 +18,7 @@ import javafx.stage.Window;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class LoginController {
     public Button submitButton;
@@ -33,7 +34,7 @@ public class LoginController {
 
 
     public void about(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/about.fxml"));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/about.fxml")));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
@@ -70,7 +71,7 @@ public class LoginController {
         } else {
             showAlert(Alert.AlertType.CONFIRMATION, owner, "Login Successful!",
                     "Welcome ");
-            root = FXMLLoader.load(getClass().getResource("/kino.fxml"));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/kino.fxml")));
             stage=(Stage)((Node)event.getSource()).getScene().getWindow();
             scene=new Scene(root);
             stage.setScene(scene);

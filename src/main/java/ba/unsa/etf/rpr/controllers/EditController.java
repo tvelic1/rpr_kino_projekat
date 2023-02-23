@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  *
@@ -82,7 +83,7 @@ public class EditController {
      f.setTrajanje(Integer.parseInt(model.trajanje.get()));
      f.setOcjena(model.ocjena.get());
         fm.update(f);
-        root = FXMLLoader.load(getClass().getResource("/kino.fxml"));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/kino.fxml")));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);

@@ -20,6 +20,8 @@ import javafx.stage.Window;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
+
 /**
  * Controller for registration.fxml
  */
@@ -201,7 +203,7 @@ public class RegisterController extends Application {
 
             showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!",
                     "Welcome " + fullNameField.getText());
-            root = FXMLLoader.load(getClass().getResource("/login.fxml"));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/login.fxml")));
             stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             scene=new Scene(root);
             stage.setScene(scene);
@@ -217,7 +219,7 @@ public class RegisterController extends Application {
      */
 
     public void login(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/login.fxml"));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/login.fxml")));
         stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);

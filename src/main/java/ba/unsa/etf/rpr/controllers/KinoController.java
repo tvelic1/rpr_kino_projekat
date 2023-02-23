@@ -25,6 +25,8 @@ import javafx.stage.Window;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 /**
  *
  * @author tvelic1
@@ -202,7 +204,7 @@ public class KinoController  {
 
     public void goedit(ActionEvent event) throws IOException {
 
-        root = FXMLLoader.load(getClass().getResource("/edit.fxml"));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/edit.fxml")));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
@@ -212,7 +214,7 @@ public class KinoController  {
 
     public void reserve(ActionEvent event) throws IOException {
 
-        root = FXMLLoader.load(getClass().getResource("/rezervacija.fxml"));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/rezervacija.fxml")));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);

@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Controller for rezervacija.fxml
@@ -96,7 +97,7 @@ public class RezervacijaController {
     private Parent root;
 
     public void goback(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/kino.fxml"));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/kino.fxml")));
         stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);

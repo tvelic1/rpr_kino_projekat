@@ -10,6 +10,8 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
+
 /**
  * Controller for about.fxml
  */
@@ -32,7 +34,7 @@ public class AboutController {
 
     public void log(ActionEvent actionEvent) throws IOException {
 
-        root = FXMLLoader.load(getClass().getResource("/login.fxml"));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/login.fxml")));
         stage=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
